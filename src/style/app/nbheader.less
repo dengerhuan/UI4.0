@@ -1,0 +1,51 @@
+.head {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 @head-padding;
+  width: 100%;
+  height: @head-hg;
+  background-color: @head-bg;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+  z-index: @head-zindex;
+  .logo {
+    width: @side-wd;
+    transition: all .2s @layout-ease;
+    a {
+      display: block;
+      text-align: center;
+    }
+    img {
+      vertical-align: middle;
+      animation: fadeIn 1s;
+      max-width: 100%;
+      &.collapsed {
+        display: none;
+      }
+      &.expanded {
+        display: inline;
+      }
+    }
+  }
+
+}
+
+// 媒体查询
+@media (max-width: @screen-sm) {
+  .head {
+    .logo {
+      width: @side-collapsed-wd;
+      img {
+        &.collapsed {
+          display: inline;
+        }
+        &.expanded {
+          display: none;
+        }
+      }
+    }
+  }
+
+}

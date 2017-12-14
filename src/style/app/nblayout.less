@@ -1,0 +1,16 @@
+html, body, nb-root {
+  height: 100%;
+}
+
+body {
+  color: @text-color;
+  background-color: @content-bg !important;
+}
+
+// warpper 的定位为相对定位 宽高都是100%  宽度超出 隐藏
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
