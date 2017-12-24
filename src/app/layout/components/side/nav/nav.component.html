@@ -1,0 +1,39 @@
+<ul class="side-nav">
+  <ng-container *ngFor="let group of this.menus.menus">
+
+
+    <li class="side-nav-group-title">
+      <span>{{group.text}}</span>
+    </li>
+
+
+    <ng-container *ngFor="let child1 of group.children">
+      <li [class.side-nav-submenu-open]="child1._open" [class.side-nav-item-selected]="child1._open">
+        <!-- link -->
+        <a target="{{ child1.target }}" class="side-nav-sub-title" (click)="toggleOpen(child1)">
+          <i *ngIf="!setting.layout.collapsed" class="{{ child1.icon }}"></i>
+          <nz-tooltip *ngIf="setting.layout.collapsed" nzPlacement="right"
+                      [nzTitle]=" child1.text">
+            <span nz-tooltip><i class="{{ child1.icon }}"></i></span>
+          </nz-tooltip>
+
+          <span>{{ child1.text }}</span>
+        </a>
+
+        <ul class="side-nav side-nav-sub side-nav-depth1">
+          <ng-container *ngFor="let child2 of child1.children">
+            <li>
+              <!-- link -->
+              <a>
+                {{ child2.text }}
+              </a>
+              <!-- external link -->
+            </li>
+          </ng-container>
+        </ul>
+      </li>
+
+
+    </ng-container>
+  </ng-container>
+</ul>

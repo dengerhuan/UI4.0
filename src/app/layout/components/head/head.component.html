@@ -1,6 +1,27 @@
 <div class="logo">
   <a>
-    <img class="expanded" src="./assets/img/logo-full.png" alt="{{settings.app.name}}" style="max-height:40px;"/>
-    <img class="collapsed" src="./assets/img/logo.png" alt="{{settings.app.name}}" style="max-height:30px;"/>
+    <img class="expanded" src="./assets/img/logo-full.png" style="max-height:40px;"/>
+    <img class="collapsed" src="./assets/img/logo.png" style="max-height:30px;"/>
   </a>
+</div>
+
+<div class="top-nav-wrapper">
+  <ul class="top-nav">
+    <!--menu-->
+    <li>
+      <div class="item" (click)="toggleCollapesd()">
+        <i class="anticon anticon-menu-{{setting.layout.collapsed? 'unfold' : 'fold'}}"></i>
+      </div>
+    </li>
+    <li>
+      <div class="item">
+        <i class="anticon anticon-github"></i>
+      </div>
+    </li>
+    <li>
+      <div class="item">
+        <i class="anticon anticon-github"></i>
+      </div>
+    </li>
+  </ul>
 </div>

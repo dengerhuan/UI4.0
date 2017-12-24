@@ -12,7 +12,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^5.0.0",
+    "@angular/animations": "^5.1.2",
     "@angular/common": "^5.0.0",
     "@angular/compiler": "^5.0.0",
     "@angular/core": "^5.0.0",
@@ -23,8 +23,9 @@
     "@angular/router": "^5.0.0",
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
-    "ng-zorro-antd": "^0.6.4",
+    "ng-zorro-antd": "^0.6.8",
     "rxjs": "^5.5.2",
+    "simple-line-icons": "^2.4.1",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {SettingService} from '../../../core/services/setting.service';
 
 @Component({
   selector: 'nb-head',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeadComponent implements OnInit {
 
-  constructor() { }
+  constructor(public setting: SettingService) {
+    console.log(this.setting.layout);
+  }
 
   ngOnInit() {
+  }
+
+  toggleCollapesd() {
+    this.setting.setLayout('collapsed', !this.setting.layout.collapsed);
   }
 
 }

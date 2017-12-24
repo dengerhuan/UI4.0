@@ -2,19 +2,25 @@
   position: fixed;
   top: 0;
   left: 0;
-  // flex 配置
+
+  // head 的position 为  fixed 顶部左边都是 0
   display: flex;
   align-items: center;
+  // head 的本身的  display 为flex
+  // flex 在交叉轴的 布局为  center
   padding: 0 @head-padding;
   width: 100%;
   height: @head-hg;
   background-color: @head-bg;
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+  //  宽度  高度以及  背景颜色和  阴影颜色
   z-index: @head-zindex;
   .logo {
+    // logo的宽度以及   动画效果
     width: @side-wd;
     transition: all .2s @layout-ease;
     a {
+      //  logo 的dsplay 为 bolck 文本对齐方式为  居中
       display: block;
       text-align: center;
     }
@@ -33,17 +39,73 @@
 
 }
 
+.top-nav-wrapper {
+  // 中间的导航 外框属性  可扩展  可压缩
+  // 本身属性为 flex
+  //  在主轴的展示方式sapce betweeen
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+}
+
+.top-nav {
+  > li {
+    // li的 展示方式为 inline-block 垂直对齐方式为剧中
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .item {
+    // li中的  每一个小格子属性
+    // 属性为block 颜色为 白色 边角  文本水平对齐方式  行高   最小宽度   内边距   外框  鼠标样式 动画
+    display: block;
+    color: #fff;
+    border-radius: @layout-spacing/4;
+    text-align: center;
+    line-height: 100%;
+    min-width: 50px;
+    padding: 10px 0;
+    outline: none;
+    cursor: pointer;
+    transition: all .3s;
+    &:hover {
+      // 鼠标经过样式
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    i {
+      font-size: @text-fs-lg+2;
+      line-height: 100%;
+    }
+  }
+}
+
+// Collapsed
+.side-collapsed {
+  .head {
+    .logo {
+      width: @side-collapsed-wd;
+      img {
+        &.collapsed {
+          display: inline;
+        }
+        &.expanded {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
 // 媒体查询 在屏幕尺寸不大于 screen-sm时，
 @media (max-width: @screen-sm) {
   .head {
     .logo {
-      width: @side-collapsed-wd !important;
+      width: @side-collapsed-wd;
       img {
         &.collapsed {
-          display: inline !important;
+          display: inline;
         }
         &.expanded {
-          display: none !important;
+          display: none;
         }
       }
     }
