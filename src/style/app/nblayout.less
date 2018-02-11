@@ -14,3 +14,32 @@ body {
   height: 100%;
   overflow-x: hidden;
 }
+
+.content {
+  margin: @head-hg @content-padding @content-padding @content-padding;
+}
+
+// Desktop
+@media (min-width: @screen-sm) {
+  .content {
+    margin-left: (@side-wd + @content-padding);
+  }
+
+  .side-collapsed {
+    .content {
+      margin-left: (@side-collapsed-wd + @content-padding);
+    }
+  }
+}
+
+@media (max-width: @screen-sm) {
+  .content {
+    margin-left: (@side-wd + @content-padding);
+  }
+
+  .side-collapsed {
+    .content {
+      margin-left: @content-padding;
+    }
+  }
+}

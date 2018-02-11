@@ -67,7 +67,7 @@ export class MenuService {
     this.http.get('assets/app-data.json')
       .catch(res => {
         console.log(res);
-        return res
+        return res;
       }).subscribe((res: any) => {
       // 初始化菜单
       console.log(res)
@@ -77,8 +77,17 @@ export class MenuService {
 
   add(items: Menu[]) {
     this.menus.push(...items);
+    this.resume();
   }
 
+  resume() {
+    let i = 0;
+    this.menus.forEach(group => {
+      group.children.forEach(item => {
+        item.__id = i++;
+      });
+    });
+  }
 
   get menus() {
     return this._menus;
