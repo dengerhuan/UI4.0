@@ -1,0 +1,35 @@
+// Alignment
+.text-left          { text-align: left !important; }
+.text-center        { text-align: center !important; }
+.text-right         { text-align: right !important; }
+
+// Transformation
+.text-lowercase  { text-transform: lowercase !important; }
+.text-uppercase  { text-transform: uppercase !important; }
+.text-capitalize { text-transform: capitalize !important; }
+.text-deleted    { text-decoration: line-through; }
+
+// wrapping
+.text-nowrap        { white-space: nowrap !important; }
+.text-wrap          { white-space: pre-wrap !important; }
+
+// Weight and italics
+
+.font-weight-normal { font-weight: normal; }
+.font-weight-bold   { font-weight: 700; }
+.font-italic        { font-style: italic; }
+
+@h1-font-size:            @font-size-base + 20; // 32px
+@h2-font-size:            @font-size-base + 12; // 24px
+@h3-font-size:            @font-size-base + 8;  // 20px
+@h4-font-size:            @font-size-base + 4;  // 16px
+@h5-font-size:            @font-size-base + 2;  // 14px
+@h6-font-size:            @font-size-base;      // 12px
+
+
+.h1 { font-size: @h1-font-size !important; }
+.h2 { font-size: @h2-font-size !important; }
+.h3 { font-size: @h3-font-size !important; }
+.h4 { font-size: @h4-font-size !important; }
+.h5 { font-size: @h5-font-size !important; }
+.h6 { font-size: @h6-font-size !important; }

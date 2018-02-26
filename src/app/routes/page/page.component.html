@@ -1,0 +1,59 @@
+<div class="content__title">
+  <h1>
+    Widgets
+  </h1>
+</div>
+<div nz-row [nzGutter]="16">
+  <div nz-col [nzXs]="24" [nzSm]="8">
+    <nz-card>
+      <ng-template #body>
+        <div class="text-right text-grey"><i class="fa fa-gamepad fa-2x"></i></div>
+        <h3 class="h3">99.999</h3>
+        <p class="text-grey">Games played last month</p>
+        <nz-progress [ngModel]="value" [nzShowInfo]="false"></nz-progress>
+      </ng-template>
+    </nz-card>
+  </div>
+  <div nz-col [nzXs]="24" [nzSm]="8">
+    <nz-card>
+      <ng-template #body>
+        <div class="text-right text-grey"><i class="fa fa-gamepad fa-2x"></i></div>
+        <h3 class="h3">99.999</h3>
+        <p class="text-grey">Games played last month</p>
+        <nz-progress [ngModel]="value" [nzShowInfo]="false" [nzStrokeWidth]="5"></nz-progress>
+      </ng-template>
+    </nz-card>
+  </div>
+  <div nz-col [nzXs]="24" [nzSm]="8">
+    <nz-card>
+      <ng-template #body>
+        <div class="text-right text-grey"><i class="fa fa-gamepad fa-2x"></i></div>
+        <h3 class="h3">99.999</h3>
+        <p class="text-grey">Games played last month</p>
+        <nz-progress [ngModel]="value" [nzShowInfo]="false" [nzStrokeWidth]="5"></nz-progress>
+      </ng-template>
+    </nz-card>
+  </div>
+</div>
+
+
+<!--<nb-card [title]="'用户数'" [extra]="'fa fa-gamepad fa-2x'">-->
+
+
+<nb-card [title]="'用户数'" [extra]="action3" kpi="123" height="'46px'">
+
+
+  <ng-template #action3>
+    <nz-tooltip [nzTitle]="'指标说明'">
+      <i nz-tooltip class="anticon anticon-file"></i>
+    </nz-tooltip>
+  </ng-template>
+
+
+  <!--
+    <nz-progress [ngModel]="value" [nzShowInfo]="false" [nzStrokeWidth]="5"></nz-progress>
+
+  -->
+  <nb-minibar></nb-minibar>
+
+</nb-card>

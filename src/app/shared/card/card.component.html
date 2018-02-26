@@ -1,0 +1,19 @@
+<nz-card class="nb-card">
+  <ng-template #title> {{_title}}</ng-template>
+
+
+  <ng-template #extra>
+    <ng-container *ngIf="_extra; else _extraTpl"><i class="{{ _extra }}"></i></ng-container>
+  </ng-template>
+
+  <ng-template #body>
+    <p *ngIf="kpi" class="kpi">{{kpi}}</p>
+
+    <div class="body-desc" [ngStyle]="{'height':height || 'auto'}">
+      <div [ngClass]="{'fixed': !!height }">
+        <ng-content></ng-content>
+      </div>
+    </div>
+
+  </ng-template>
+</nz-card>

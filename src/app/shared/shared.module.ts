@@ -1,6 +1,6 @@
 import {ModuleWithProviders, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-
+import {RouterModule} from '@angular/router';
 
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
@@ -11,7 +11,7 @@ import {
   NzButtonModule,
   NzAlertModule,
   NzBadgeModule,
-  // NzCalendarModule,
+  NzCalendarModule,
   NzCascaderModule,
   NzCheckboxModule,
   NzDatePickerModule,
@@ -44,18 +44,23 @@ import {
   NzLayoutModule,
   NzRootModule,
   NzCarouselModule,
-  // NzCardModule,
+  NzCardModule,
   NzCollapseModule,
   NzTimelineModule,
   NzToolTipModule,
-  // NzBackTopModule,
-  // NzAffixModule,
-  // NzAnchorModule,
+  NzBackTopModule,
+  NzAffixModule,
+  NzAnchorModule,
   NzAvatarModule,
-  // SERVICES
   NzNotificationService,
   NzMessageService
 } from 'ng-zorro-antd';
+import {FormsModule} from '@angular/forms';
+
+import {CardComponent} from './card/card.component';
+
+import {ChartModule} from './chart/chart.module';
+
 
 const ZORROMODULES = [
   // LoggerModule,
@@ -63,7 +68,7 @@ const ZORROMODULES = [
   NzButtonModule,
   NzAlertModule,
   NzBadgeModule,
-  // NzCalendarModule,
+  NzCalendarModule,
   NzCascaderModule,
   NzCheckboxModule,
   NzDatePickerModule,
@@ -96,24 +101,31 @@ const ZORROMODULES = [
   NzLayoutModule,
   NzRootModule,
   NzCarouselModule,
-  // NzCardModule,
+  NzCardModule,
   NzCollapseModule,
   NzTimelineModule,
   NzToolTipModule,
-  // NzBackTopModule,
-  // NzAffixModule,
-  // NzAnchorModule,
+  NzBackTopModule,
+  NzAffixModule,
+  NzAnchorModule,
   NzAvatarModule
 ];
+
+const Components = [CardComponent];
+
+const sharedModule = [ChartModule];
 
 @NgModule({
   imports: [
     CommonModule,
+    RouterModule,
     HttpClientModule,
-    ...ZORROMODULES
+    FormsModule,
+    ...ZORROMODULES,
+    ...sharedModule,
   ],
-  declarations: [],
-  exports: [...ZORROMODULES]
+  declarations: [...Components],
+  exports: [...ZORROMODULES, RouterModule, FormsModule, ...Components, ...sharedModule]
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders {
