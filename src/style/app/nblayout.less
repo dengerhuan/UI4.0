@@ -34,12 +34,14 @@ body {
 
 @media (max-width: @screen-sm) {
   .content {
-    margin-left: (@side-wd + @content-padding);
+    /* margin-left: (@side-wd + @content-padding);*/
+    transform: translate3d(@side-wd, 0, 0);
   }
 
   .side-collapsed {
     .content {
-      margin-left: @content-padding;
+      transform: translateZ(0);
+      /* margin-left: @content-padding;*/
     }
   }
 }

@@ -9,8 +9,8 @@
   <ng-template #body>
     <p *ngIf="kpi" class="kpi">{{kpi}}</p>
 
-    <div class="body-desc" [ngStyle]="{'height':height || 'auto'}">
-      <div [ngClass]="{'fixed': !!height }">
+    <div class="body-desc" [ngStyle]="{'height.px':contentHeight || 'auto'}">
+      <div [ngClass]="{'fixed': !!contentHeight }">
         <ng-content></ng-content>
       </div>
     </div>

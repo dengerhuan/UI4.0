@@ -4,18 +4,17 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'nb-minibar',
+  selector: 'nb-miniarea',
   template: `
     <div class="g2-chart-desc">
       <div #container></div>
     </div>
   `,
-  styleUrls: ['./minibar.component.less']
+  styleUrls: ['./miniarea.component.less']
 })
-export class MinibarComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy {
+export class MiniareaComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy {
 
   chart: any;
-
 
   @ViewChild('container') node: ElementRef;
 
@@ -35,14 +34,14 @@ export class MinibarComponent implements OnInit, AfterViewInit, OnChanges, OnDes
 
     this.chart = new G2.Chart({
       container: this.node.nativeElement,
-      height: this.height,
+      height: 46,
       forceFit: true,
       padding: 0
     });
     this.chart.legend(false)
     this.chart.axis(false);
-    this.chart.interval().position('genre*sold').color('genre')
-
+    this.chart.area().position('genre*sold');
+    this.chart.line().position('genre*sold');
     this.chart.source(this.data);
     this.chart.render();
 

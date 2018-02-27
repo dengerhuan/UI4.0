@@ -4,56 +4,54 @@
   </h1>
 </div>
 <div nz-row [nzGutter]="16">
-  <div nz-col [nzXs]="24" [nzSm]="8">
-    <nz-card>
-      <ng-template #body>
-        <div class="text-right text-grey"><i class="fa fa-gamepad fa-2x"></i></div>
-        <h3 class="h3">99.999</h3>
-        <p class="text-grey">Games played last month</p>
-        <nz-progress [ngModel]="value" [nzShowInfo]="false"></nz-progress>
-      </ng-template>
-    </nz-card>
+  <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
+    <nb-tile></nb-tile>
   </div>
-  <div nz-col [nzXs]="24" [nzSm]="8">
-    <nz-card>
-      <ng-template #body>
-        <div class="text-right text-grey"><i class="fa fa-gamepad fa-2x"></i></div>
-        <h3 class="h3">99.999</h3>
-        <p class="text-grey">Games played last month</p>
-        <nz-progress [ngModel]="value" [nzShowInfo]="false" [nzStrokeWidth]="5"></nz-progress>
-      </ng-template>
-    </nz-card>
+  <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
+    <nb-tile [icon]="'fa fa-university'"></nb-tile>
   </div>
-  <div nz-col [nzXs]="24" [nzSm]="8">
-    <nz-card>
-      <ng-template #body>
-        <div class="text-right text-grey"><i class="fa fa-gamepad fa-2x"></i></div>
-        <h3 class="h3">99.999</h3>
-        <p class="text-grey">Games played last month</p>
-        <nz-progress [ngModel]="value" [nzShowInfo]="false" [nzStrokeWidth]="5"></nz-progress>
-      </ng-template>
-    </nz-card>
+  <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
+    <nb-tile></nb-tile>
+  </div>
+
+  <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
+    <nb-tile></nb-tile>
   </div>
 </div>
 
 
-<!--<nb-card [title]="'用户数'" [extra]="'fa fa-gamepad fa-2x'">-->
+<div nz-row [nzGutter]="16">
+  <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
+    <nb-card [title]="'用户数'" kpi="123" contentHeight="46">
+      <nb-minibar height="46" [data]="data"></nb-minibar>
+    </nb-card>
+  </div>
+  <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
+    <nb-card [title]="'用户数'" kpi="123" contentHeight="46">
+      <nb-minibar height="46" [data]="data"></nb-minibar>
+    </nb-card>
+  </div>
+  <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
+    <nb-card [title]="'用户数'" kpi="123" contentHeight="46" [extra]="action3">
+      <nb-miniarea height="46" [data]="data"></nb-miniarea>
+    </nb-card>
+  </div>
+  <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
+    <nb-card [title]="'用户数'" kpi="123" contentHeight="46" [extra]="action3">
+      <nb-mini-progress></nb-mini-progress>
+    </nb-card>
+  </div>
+</div>
 
 
-<nb-card [title]="'用户数'" [extra]="action3" kpi="123" height="'46px'">
-
-
-  <ng-template #action3>
-    <nz-tooltip [nzTitle]="'指标说明'">
-      <i nz-tooltip class="anticon anticon-file"></i>
-    </nz-tooltip>
+<nz-card>
+  <ng-template #body>
+    <nb-bar [height]="200" [data]="data" [title]="'干扰分布图'" ></nb-bar>
   </ng-template>
+</nz-card>
 
-
-  <!--
-    <nz-progress [ngModel]="value" [nzShowInfo]="false" [nzStrokeWidth]="5"></nz-progress>
-
-  -->
-  <nb-minibar></nb-minibar>
-
-</nb-card>
+<ng-template #action3>
+  <nz-tooltip [nzTitle]="'指标说明'">
+    <i nz-tooltip class="anticon anticon-file"></i>
+  </nz-tooltip>
+</ng-template>

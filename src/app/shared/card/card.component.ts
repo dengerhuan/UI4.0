@@ -12,7 +12,7 @@ export class CardComponent implements OnInit {
   public _extraTpl: TemplateRef<any>;
 
 
-  @Input() height = 0;
+  @Input() contentHeight: string;
 
   @Input()
   set title(value: string) {
@@ -35,6 +35,7 @@ export class CardComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.contentHeight);
   }
 
 

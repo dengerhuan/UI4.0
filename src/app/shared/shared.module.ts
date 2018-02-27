@@ -57,10 +57,10 @@ import {
 } from 'ng-zorro-antd';
 import {FormsModule} from '@angular/forms';
 
-import {CardComponent} from './card/card.component';
-
-import {ChartModule} from './chart/chart.module';
-
+import {shared_components} from './index';
+import { TileComponent } from './tile/tile.component';
+import { MiniareaComponent } from './chart/miniarea/miniarea.component';
+import { BarComponent } from './chart/bar/bar.component';
 
 const ZORROMODULES = [
   // LoggerModule,
@@ -111,9 +111,7 @@ const ZORROMODULES = [
   NzAvatarModule
 ];
 
-const Components = [CardComponent];
-
-const sharedModule = [ChartModule];
+const sharedModule = [];
 
 @NgModule({
   imports: [
@@ -124,8 +122,8 @@ const sharedModule = [ChartModule];
     ...ZORROMODULES,
     ...sharedModule,
   ],
-  declarations: [...Components],
-  exports: [...ZORROMODULES, RouterModule, FormsModule, ...Components, ...sharedModule]
+  declarations: [...shared_components, TileComponent, MiniareaComponent, BarComponent],
+  exports: [...ZORROMODULES, RouterModule, FormsModule, ...sharedModule, ...shared_components]
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders {

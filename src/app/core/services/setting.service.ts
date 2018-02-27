@@ -1,5 +1,12 @@
 import {Injectable} from '@angular/core';
 
+import {Subscription} from 'rxjs/Subscription';
+import {Observable} from 'rxjs/Observable';
+
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import 'rxjs/add/observable/fromEvent';
+import 'rxjs/add/operator/debounceTime';
+
 
 export interface Layout {
   collapsed: boolean;
@@ -12,6 +19,8 @@ export class SettingService {
   }
 
 
+  unknownResize: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+
   private _layout: Layout = null;
 
   get layout(): Layout {
@@ -23,6 +32,7 @@ export class SettingService {
 
   setLayout(name: string, value: any): boolean {
     console.log(value)
+    this.unknownResize.next(value);
     if (typeof this.layout[name] !== 'undefined') {
       this.layout[name] = value;
       return true;
