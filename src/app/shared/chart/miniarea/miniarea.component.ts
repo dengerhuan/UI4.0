@@ -30,7 +30,7 @@ export class MiniareaComponent implements OnInit, AfterViewInit, OnChanges, OnDe
   @Input() data = [];
 
   ngAfterViewInit(): void {
-    console.log(`ngAfterViewInit`);
+
 
     this.chart = new G2.Chart({
       container: this.node.nativeElement,

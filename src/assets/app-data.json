@@ -21,13 +21,13 @@
           "icon": "icon-speedometer",
           "children": [
             {
-              "text": "仪表盘V1",
-              "link": "/dashboard/v1",
+              "text": "简单的列子",
+              "link": "/",
               "translate": "dashboard_v1"
             },
             {
-              "text": "分析页",
-              "link": "/dashboard/analysis",
+              "text": "图表封装",
+              "link": "/page/1sss",
               "translate": "dashboard_analysis"
             },
             {
@@ -50,12 +50,12 @@
           "children": [
             {
               "text": "Monitor",
-              "link": "/dashboard/monitor",
+              "link": "/page/1",
               "translate": "dashboard_monitor"
             },
             {
               "text": "Workplace",
-              "link": "/dashboard/workplace",
+              "link": "/page/1",
               "translate": "dashboard_workplace"
             }
           ]

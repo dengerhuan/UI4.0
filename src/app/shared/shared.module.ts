@@ -58,9 +58,6 @@ import {
 import {FormsModule} from '@angular/forms';
 
 import {shared_components} from './index';
-import { TileComponent } from './tile/tile.component';
-import { MiniareaComponent } from './chart/miniarea/miniarea.component';
-import { BarComponent } from './chart/bar/bar.component';
 
 const ZORROMODULES = [
   // LoggerModule,
@@ -122,7 +119,7 @@ const sharedModule = [];
     ...ZORROMODULES,
     ...sharedModule,
   ],
-  declarations: [...shared_components, TileComponent, MiniareaComponent, BarComponent],
+  declarations: [...shared_components],
   exports: [...ZORROMODULES, RouterModule, FormsModule, ...sharedModule, ...shared_components]
 })
 export class SharedModule {

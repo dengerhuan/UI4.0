@@ -1,8 +1,5 @@
-<div class="content__title">
-  <h1>
-    Widgets
-  </h1>
-</div>
+<nb-nav-tools></nb-nav-tools>
+
 <div nz-row [nzGutter]="16">
   <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
     <nb-tile></nb-tile>
@@ -46,12 +43,104 @@
 
 <nz-card>
   <ng-template #body>
-    <nb-bar [height]="200" [data]="data" [title]="'干扰分布图'" ></nb-bar>
+
+
+    <nz-tabset nzSize="'small">
+      <nz-tab>
+        <ng-template #nzTabHeading>
+          市场
+        </ng-template>
+
+        <div nz-row [nzGutter]="16">
+          <div nz-col nzXs="24" nzSm="24" nzMd="8" nzLg="9">
+            <nb-pie [height]="300" [title]="'用户数'" [data]="data"></nb-pie>
+          </div>
+
+          <div nz-col nzXs="24" nzSm="24" nzMd="8" nzLg="9">
+            <nb-pie [height]="300" [title]="'用户数'" [data]="data"></nb-pie>
+          </div>
+          <div nz-col nzXs="24" nzSm="24" nzMd="8" nzLg="6">
+            <nb-rank-list [pageSize]="6" [title]="'综合排名'" [data]="rankingListData"></nb-rank-list>
+          </div>
+        </div>
+
+      </nz-tab>
+
+      <nz-tab>
+        <ng-template #nzTabHeading>
+          市场
+        </ng-template>
+
+
+        <div nz-row [nzGutter]="16">
+          <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="18">
+            <nb-bar [height]="300" [data]="data" [title]="'干扰分布图'"></nb-bar>
+          </div>
+          <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="6">
+            <nb-rank-list [title]="'综合排名'" [data]="rankingListData"></nb-rank-list>
+          </div>
+        </div>
+
+      </nz-tab>
+
+      <ng-template #nzTabBarExtraContent>
+
+
+        <div class="sm-hidden-wrap">
+
+          <nz-datepicker style="width:120px" class="mr-md" [nzFormat]="'YYYY-MM-DD'"
+                         [nzPlaceHolder]="'开始日期'"></nz-datepicker>
+          <nz-datepicker style="width:120px" [nzFormat]="'YYYY-MM-DD'"
+                         [nzPlaceHolder]="'结束日期'"></nz-datepicker>
+
+          <nz-button-group>
+            <button nz-button (click)="setDate('today')">今日</button>
+            <button nz-button (click)="setDate('week')">本周</button>
+            <button nz-button (click)="setDate('month')">本月</button>
+          </nz-button-group>
+
+        </div>
+
+
+      </ng-template>
+    </nz-tabset>
+
+
   </ng-template>
 </nz-card>
+
 
 <ng-template #action3>
   <nz-tooltip [nzTitle]="'指标说明'">
     <i nz-tooltip class="anticon anticon-file"></i>
   </nz-tooltip>
 </ng-template>
+
+
+
+
+<!--
+
+-->
+
+
+<nz-card>
+  <ng-template #title> 销售额类别占比</ng-template>
+  <ng-template #body>
+
+
+    <div nz-row [nzGutter]="16">
+      <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12">
+        <nb-pie [height]="250" [title]="'用户数'" [data]="data"></nb-pie>
+      </div>
+
+      <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12">
+        <nb-line [height]="250" [title]="'用户数'" [data]="data"></nb-line>
+      </div>
+    </div>
+
+  </ng-template>
+</nz-card>
+
+
+<!-------------------------------->

@@ -25,7 +25,7 @@ export class SettingService {
 
   get layout(): Layout {
     if (!this._layout) {
-      this._layout = Object.assign(<Layout>{collapsed: true}, {collapsed: false});
+      this._layout = Object.assign(<Layout>{}, {collapsed: true});
     }
     return this._layout;
   }

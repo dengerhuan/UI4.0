@@ -66,11 +66,9 @@ export class MenuService {
 
     this.http.get('assets/app-data.json')
       .catch(res => {
-        console.log(res);
         return res;
       }).subscribe((res: any) => {
       // 初始化菜单
-      console.log(res)
       this.add(res.menu);
     });
   }

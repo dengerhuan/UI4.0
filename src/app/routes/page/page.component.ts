@@ -9,8 +9,8 @@ import {Component, OnInit} from '@angular/core';
 export class PageComponent implements OnInit {
 
   value = 10;
-
-
+  _dateRange = [null, null];
+  rankingListData: any[] = [];
   data = [
     {genre: 'xwa', sold: 275},
     {genre: 'asdaw', sold: 115},
@@ -30,19 +30,41 @@ export class PageComponent implements OnInit {
   ]; // G2 对数据源格式的要求，仅仅是 JSON 数组，数组的每个元素是一个标准 JSON 对象。
 
 
+
   constructor() {
- /*   setTimeout(() => {
-      this.data = [
-        {genre: 'xwa', sold: 275},
-        {genre: 'asdaw', sold: 115},
-        {genre: 'Action', sold: 120},
-        {genre: 'Shooter', sold: 350},
-        {genre: 'ss', sold: 150},
-        {genre: '1dsa', sold: 275},];
-    }, 2000);*/
+
+
+    const area = ['柯城片区', '常山片区', '衢江片区', '江山片区', '开化片区', '龙游片区'];
+
+
+    setTimeout(() => {
+
+      const ss = []
+      area.forEach(item => {
+
+        for (let i = 0; i < 5; i++) {
+          ss.push({
+            title: `${item} ${i} 号扇区`,
+            total: 10
+          });
+        }
+      });
+      this.rankingListData = ss;
+    }, 500);
+
   }
 
   ngOnInit() {
   }
+
+
+  setDate(msg: string) {
+
+  }
+
+  public toast() {
+    console.log('toast');
+  }
+
 
 }

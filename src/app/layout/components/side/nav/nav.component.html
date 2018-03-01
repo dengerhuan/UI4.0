@@ -1,5 +1,5 @@
 <ul class="side-nav">
-  <ng-container *ngFor="let group of this.menus.menus">
+  <ng-container *ngFor="let group of menus.menus">
 
 
     <li class="side-nav-group-title">
@@ -8,12 +8,12 @@
 
 
     <ng-container *ngFor="let child1 of group.children">
-      <li [class.side-nav-submenu-open]="child1._open" [class.side-nav-item-selected]="child1._open">
+      <li [class.side-nav-submenu-open]="child1._open" [routerLinkActive]="['side-nav-item-selected']">
         <!-- link -->
         <a target="{{ child1.target }}" class="side-nav-sub-title"
            (click)="toggleOpen(child1)"
            (mouseenter)="showSubMenu($event, child1)">
-          <i  class="{{ child1.icon }}"></i>
+          <i class="{{ child1.icon }}"></i>
 
 
           <span>{{ child1.text }}</span>
@@ -23,13 +23,15 @@
           <ng-container *ngFor="let child2 of child1.children">
             <li>
               <!-- link -->
-              <a>
+              <a [routerLink]="child2.link">
                 {{ child2.text }}
               </a>
               <!-- external link -->
             </li>
           </ng-container>
         </ul>
+
+
       </li>
 
 

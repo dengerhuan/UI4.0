@@ -9,7 +9,6 @@ import {SettingService} from '../../../core/services/setting.service';
 export class HeadComponent implements OnInit {
 
   constructor(public setting: SettingService) {
-    console.log(this.setting.layout);
   }
 
   ngOnInit() {

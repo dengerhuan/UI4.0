@@ -13,10 +13,8 @@ import {SettingService} from '../../../core/services/setting.service';
 @Component({
   selector: 'nb-bar',
   template: `
-    <div class="g2-chart-desc">
-      <ng-container *ngIf="_title; else _titleTpl"><h4>{{_title}}</h4></ng-container>
-      <div #container></div>
-    </div>
+    <ng-container *ngIf="_title; else _titleTpl"><h4>{{_title}}</h4></ng-container>
+    <div #container></div>
   `,
   styleUrls: ['./bar.component.less']
 })
@@ -39,19 +37,17 @@ export class BarComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy
   @ViewChild('container') node: ElementRef;
 
   @HostBinding('style.height.px')
-  @Input() height = 0;
+  @Input() height = 200;
 
   constructor(setting: SettingService) {
-    setting.unknownResize.subscribe(() => {
-      if (!!this.chart) {
-        console.log('1111111111111111111')
-        this.chart.repaint();
-      }
-      console.log('unknownresize');
-    });
-    /*
-        Observable.fromEvent(window, 'resize').debounceTime(200).subscribe(x => console.log(x + '11111111111212313123412431'));
-    */
+    /*  setting.unknownResize.subscribe(() => {
+        /!*   if (!!this.chart) {
+             this.chart.changeWidth(window.innerWidth);
+           }*!/
+      });
+      /!*
+          Observable.fromEvent(window, 'resize').debounceTime(200).subscribe(x => console.log(x + '11111111111212313123412431'));
+      *!/*/
 
   }
 
@@ -61,19 +57,19 @@ export class BarComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy
   @Input() data = [];
 
   ngAfterViewInit(): void {
-    console.log(`ngAfterViewInit`);
+
 
     this.chart = new G2.Chart({
       container: this.node.nativeElement,
-      height: this.height,
+      height: +this.height - 22,
       forceFit: true,
-      padding: 0
+      padding: [20, 'auto', 40, 'auto']
     });
-    this.chart.interval().position('genre*sold').color('genre')
 
+    this.chart.legend(false)
     this.chart.source(this.data);
+    this.chart.interval().position('genre*sold').color('genre')
     this.chart.render();
-
 
   }
 

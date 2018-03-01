@@ -1,0 +1,16 @@
+<div class="rank_list">
+  <ng-container *ngIf="_title; else _titleTpl"><h4>{{_title}}</h4></ng-container>
+  <ul>
+    <li *ngFor="let i of _data; let idx = index">
+      <div>
+      <span class="icon"
+            [ngStyle]="{'background-color': _colorArray[calculateIndex(idx)]}">{{calculateIndex(idx)+1}}</span>
+        {{i.title}}
+      </div>
+      <span>{{i.total}}</span>
+    </li>
+  </ul>
+  <nz-pagination [nzTotal]="data.length" (nzPageIndexChange)="changeData()" [(nzPageIndex)]="_current"></nz-pagination>
+</div>
+
+

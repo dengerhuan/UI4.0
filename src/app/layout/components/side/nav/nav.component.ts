@@ -107,6 +107,13 @@ export class NavComponent implements OnInit {
 
 
   toggleOpen(menu: Menu) {
+   /* console.log(menu)*/
+    this.menus.menus.forEach(item => {
+      console.log(item)
+      item.children.forEach(ii => {
+        ii._open = false;
+      })
+    });
     menu._open = !menu._open;
   }
 }

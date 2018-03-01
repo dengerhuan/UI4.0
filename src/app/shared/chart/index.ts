@@ -1,3 +1,7 @@
+export {LineComponent} from './line/line.component';
+
+export {PieComponent} from './pie/pie.component';
+
 export {BarComponent} from './bar/bar.component';
 
 export {MiniareaComponent} from './miniarea/miniarea.component';

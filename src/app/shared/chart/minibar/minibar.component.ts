@@ -31,19 +31,16 @@ export class MinibarComponent implements OnInit, AfterViewInit, OnChanges, OnDes
   @Input() data = [];
 
   ngAfterViewInit(): void {
-    console.log(`ngAfterViewInit`);
-
     this.chart = new G2.Chart({
       container: this.node.nativeElement,
       height: this.height,
       forceFit: true,
       padding: 0
     });
+    this.chart.source(this.data);
     this.chart.legend(false)
     this.chart.axis(false);
     this.chart.interval().position('genre*sold').color('genre')
-
-    this.chart.source(this.data);
     this.chart.render();
 
 
