@@ -1,4 +1,4 @@
-<nb-nav-tools></nb-nav-tools>
+<nb-nav-tools class="content-title"></nb-nav-tools>
 
 <div nz-row [nzGutter]="16">
   <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
@@ -52,12 +52,11 @@
         </ng-template>
 
         <div nz-row [nzGutter]="16">
-          <div nz-col nzXs="24" nzSm="24" nzMd="8" nzLg="9">
-            <nb-pie [height]="300" [title]="'用户数'" [data]="data"></nb-pie>
+          <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="9">
+            <nb-line [height]="300" [data]="piedata" [title]="'用户数'"></nb-line>
           </div>
-
-          <div nz-col nzXs="24" nzSm="24" nzMd="8" nzLg="9">
-            <nb-pie [height]="300" [title]="'用户数'" [data]="data"></nb-pie>
+          <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="9">
+            <nb-pie [height]="300" [data]="piedata" [title]="'用户数'" [innerText]="false" [data]="data"></nb-pie>
           </div>
           <div nz-col nzXs="24" nzSm="24" nzMd="8" nzLg="6">
             <nb-rank-list [pageSize]="6" [title]="'综合排名'" [data]="rankingListData"></nb-rank-list>
@@ -68,7 +67,24 @@
 
       <nz-tab>
         <ng-template #nzTabHeading>
-          市场
+          地理位置
+        </ng-template>
+
+
+        <div nz-row [nzGutter]="16">
+          <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="18">
+            <nb-map-2d [height]="400"></nb-map-2d>
+          </div>
+          <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="6">
+            <nb-rank-list [title]="'综合排名'" [pageSize]="9" [data]="rankingListData"></nb-rank-list>
+          </div>
+        </div>
+      </nz-tab>
+
+
+      <nz-tab>
+        <ng-template #nzTabHeading>
+          工程
         </ng-template>
 
 
@@ -117,25 +133,23 @@
 </ng-template>
 
 
-
-
 <!--
 
 -->
 
 
 <nz-card>
-  <ng-template #title> 销售额类别占比</ng-template>
+  <ng-template #title> 事件分布图</ng-template>
   <ng-template #body>
 
 
     <div nz-row [nzGutter]="16">
       <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12">
-        <nb-pie [height]="250" [title]="'用户数'" [data]="data"></nb-pie>
+        <nb-pie [height]="300" [data]="piedata" [title]="'用户数'" [innerText]="false" [data]="data"></nb-pie>
       </div>
 
       <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12">
-        <nb-line [height]="250" [title]="'用户数'" [data]="data"></nb-line>
+        <nb-pie [height]="300" [data]="piedata" [title]="'用户数'" [innerText]="false" [data]="data"></nb-pie>
       </div>
     </div>
 

@@ -26,8 +26,8 @@
               "translate": "dashboard_v1"
             },
             {
-              "text": "图表封装",
-              "link": "/page/1sss",
+              "text": "进度条",
+              "link": "/bus/page/1",
               "translate": "dashboard_analysis"
             },
             {
@@ -49,13 +49,13 @@
           "shortcut_root": true,
           "children": [
             {
-              "text": "Monitor",
-              "link": "/page/1",
+              "text": "进度条",
+              "link": "/bus/page/1",
               "translate": "dashboard_monitor"
             },
             {
               "text": "Workplace",
-              "link": "/page/1",
+              "link": "/bus/page/1",
               "translate": "dashboard_workplace"
             }
           ]
@@ -232,19 +232,19 @@
         {
           "text": "地图",
           "translate": "maps",
-          "link": "/maps",
+          "link": "maps",
           "icon": "icon-map",
           "acl": "role-b",
           "children": [
             {
-              "text": "QQ",
-              "link": "/maps/qq",
-              "translate": "qq"
+              "text": "2D",
+              "link": "/bus/map",
+              "translate": "map"
             },
             {
-              "text": "Baidu",
-              "link": "/maps/baidu",
-              "translate": "baidu"
+              "text": "3D",
+              "link": "/map",
+              "translate": "3D"
             }
           ]
         }
@@ -374,19 +374,14 @@
           "icon": "icon-user",
           "children": [
             {
-              "text": "login",
-              "link": "/pro/user/login",
+              "text": "登录",
+              "link": "/user/login",
               "translate": "pro-login"
             },
             {
-              "text": "register",
-              "link": "/pro/user/register",
+              "text": "历史记录",
+              "link": "/user/visit",
               "translate": "pro-register"
-            },
-            {
-              "text": "register result",
-              "link": "/pro/user/register-result",
-              "translate": "pro-register-result"
             }
           ]
         }

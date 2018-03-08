@@ -12,6 +12,8 @@
       <li nz-menu-item>name</li>
       <li nz-menu-item>set</li>
       <li nz-menu-item>age</li>
+      <li nz-menu-item (click)="userService.clear()">注销</li>
+      <li nz-menu-item (click)="userService.logout()">登出</li>
     </ul>
   </nz-dropdown>
   <nb-side-nav class="display-b paddingY-lg"></nb-side-nav>

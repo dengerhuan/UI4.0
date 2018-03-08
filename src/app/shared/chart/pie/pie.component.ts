@@ -8,6 +8,7 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/operator/debounceTime';
 import {SettingService} from '../../../core/services/setting.service';
+import index from "@angular/cli/lib/cli";
 
 
 @Component({
@@ -27,6 +28,8 @@ export class PieComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy
 
   @Input() innerText = true;
 
+  @Input() data: any[];
+
   @Input()
   set title(value: string | TemplateRef<any>) {
     if (value instanceof TemplateRef) {
@@ -43,94 +46,61 @@ export class PieComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy
   @Input() height = 200;
 
   constructor(setting: SettingService) {
-    /*  setting.unknownResize.subscribe(() => {
-        /!*   if (!!this.chart) {
-             this.chart.changeWidth(window.innerWidth);
-           }*!/
-      });
-      /!*
-          Observable.fromEvent(window, 'resize').debounceTime(200).subscribe(x => console.log(x + '11111111111212313123412431'));
-      *!/*/
-
   }
 
   ngOnInit() {
   }
 
-  @Input() data = [];
 
   ngAfterViewInit(): void {
+    this.makeChart();
+  }
 
+  makeChart() {
 
-    const data = [
-      {item: '事例一', count: 40},
-      {item: '事例二', count: 21},
-      {item: '事例三', count: 17},
-      {item: '事例四', count: 13},
-      {item: '事例五', count: 9},
-      {item: '事例一', count: 40},
-      {item: '事例二1', count: 21},
-      {item: '事例三2', count: 17}
-    ];
+    const labelConfig = {
+      formatter: (val, item) => {
+        return this.innerText ? val : item.point.item + ': ' + val;
+      }
+    }
 
+    if (this.innerText) {
+      Object.assign(labelConfig, {
+        offset: -20,
+        // autoRotate: false,
+        textStyle:
+          {
+            rotate: 0,
+            textAlign: 'center',
+            shadowBlur: 2,
+            shadowColor: 'rgba(0, 0, 0, .45)'
+          }
+      });
+    }
 
-    console.log(Object.assign({}, ...data.map(item => {
-      console.log(item)
-    })));
-
-
-    const chart = new G2.Chart({
+    this.chart = new G2.Chart({
       container: this.node.nativeElement,
       forceFit: true,
       height: +this.height - 22,
       padding: [0, 'auto', 0, 0],
     });
-    chart.source(data, {});
-    chart.coord('theta', {
+    this.chart.source(this.data);
+    this.chart.coord('theta', {
       radius: 0.75,
       innerRadius: 0.6
     });
 
-    chart.legend(true, {
+    this.chart.legend(true, {
       position: 'right',
-
       itemFormatter: (val) => {
-        console.log(val);
-        return val + ' | ';
+        return val;
       }
-    })
-    chart.intervalStack()
+    });
+    this.chart.intervalStack()
       .position('count')
       .color('item')
-      .label('count', {
-        formatter: (val, item) => {
-          return this.innerText ? val : item.point.item + ': ' + val;
-        }, offset: -20,
-        // autoRotate: false,
-        textStyle: {
-          rotate: 0,
-          textAlign: 'center',
-          shadowBlur: 2,
-          fill: 'rgba(0, 0, 0, .5)',
-          shadowColor: 'rgba(0, 0, 0, .45)'
-        }
-      })
-
-
-    chart.render();
-
-    /*   this.chart = new G2.Chart({
-         container: this.node.nativeElement,
-         height: +this.height - 22,
-         forceFit: true,
-         padding: [20, 'auto', 40, 'auto']
-       });
-
-       this.chart.legend(false)
-       this.chart.source(this.data);
-       this.chart.interval().position('genre*sold').color('genre')
-       this.chart.render();*/
-
+      .label('count', labelConfig);
+    this.chart.render();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -140,7 +110,8 @@ export class PieComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy
   }
 
   ngOnDestroy(): void {
-    if (this.chart)
+    if (this.chart) {
       this.chart.destroy();
+    }
   }
 }

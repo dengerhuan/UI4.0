@@ -2,6 +2,7 @@ import {
   AfterViewInit, Component, ElementRef, HostBinding, Input, OnChanges, OnDestroy, OnInit, SimpleChanges,
   ViewChild
 } from '@angular/core';
+import {BarDataSet} from '../bar/bar.component';
 
 @Component({
   selector: 'nb-minibar',
@@ -28,7 +29,7 @@ export class MinibarComponent implements OnInit, AfterViewInit, OnChanges, OnDes
   ngOnInit() {
   }
 
-  @Input() data = [];
+  @Input() data: BarDataSet[] = [];
 
   ngAfterViewInit(): void {
     this.chart = new G2.Chart({
@@ -40,7 +41,7 @@ export class MinibarComponent implements OnInit, AfterViewInit, OnChanges, OnDes
     this.chart.source(this.data);
     this.chart.legend(false)
     this.chart.axis(false);
-    this.chart.interval().position('genre*sold').color('genre')
+    this.chart.interval().position('x*y').color('x')
     this.chart.render();
 
 
@@ -53,6 +54,8 @@ export class MinibarComponent implements OnInit, AfterViewInit, OnChanges, OnDes
   }
 
   ngOnDestroy(): void {
-    this.chart.destroy();
+    if (this.chart) {
+      this.chart.destroy();
+    }
   }
 }

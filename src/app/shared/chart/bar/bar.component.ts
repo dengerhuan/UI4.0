@@ -9,6 +9,10 @@ import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/operator/debounceTime';
 import {SettingService} from '../../../core/services/setting.service';
 
+export interface BarDataSet {
+  x: string;
+  y: number;
+}
 
 @Component({
   selector: 'nb-bar',
@@ -20,9 +24,11 @@ import {SettingService} from '../../../core/services/setting.service';
 })
 export class BarComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy {
 
+
   chart: any;
   _title = '';
   _titleTpl: TemplateRef<any>;
+  @Input() data: BarDataSet[] = [];
 
   @Input()
   set title(value: string | TemplateRef<any>) {
@@ -54,7 +60,6 @@ export class BarComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy
   ngOnInit() {
   }
 
-  @Input() data = [];
 
   ngAfterViewInit(): void {
 
@@ -68,7 +73,7 @@ export class BarComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy
 
     this.chart.legend(false)
     this.chart.source(this.data);
-    this.chart.interval().position('genre*sold').color('genre')
+    this.chart.interval().position('x*y').color('x')
     this.chart.render();
 
   }
@@ -80,6 +85,8 @@ export class BarComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy
   }
 
   ngOnDestroy(): void {
-    this.chart.destroy();
+    if (this.chart) {
+      this.chart.destroy();
+    }
   }
 }

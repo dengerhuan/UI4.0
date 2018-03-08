@@ -40,12 +40,10 @@ export class MiniareaComponent implements OnInit, AfterViewInit, OnChanges, OnDe
     });
     this.chart.legend(false)
     this.chart.axis(false);
-    this.chart.area().position('genre*sold');
-    this.chart.line().position('genre*sold');
+    this.chart.area().position('x*y');
+    this.chart.line().position('x*y');
     this.chart.source(this.data);
     this.chart.render();
-
-
   }
 
   ngOnChanges(changes: SimpleChanges): void {

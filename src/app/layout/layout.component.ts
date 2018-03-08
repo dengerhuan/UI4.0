@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, Inject, OnInit} from '@angular/core';
+import {DOCUMENT} from '@angular/common';
 
 @Component({
   selector: 'nb-layout',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LayoutComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+
+  }
 
   ngOnInit() {
+
   }
 
 }

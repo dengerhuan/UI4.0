@@ -22,7 +22,9 @@
         "styles.less"
       ],
       "scripts": [
-
+        "../lib/heatmap.min.js",
+        "../lib/leaflet-heatmap.js",
+        "../lib/leaflet-heat.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

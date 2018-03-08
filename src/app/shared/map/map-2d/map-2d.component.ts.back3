@@ -1,0 +1,173 @@
+import {
+  AfterViewInit, Component, ElementRef, HostBinding, Input, OnChanges, OnDestroy, OnInit, SimpleChanges,
+  ViewChild
+} from '@angular/core';
+import {Http} from '../../../core/services/http.client';
+
+@Component({
+  selector: 'nb-map-2d',
+  templateUrl: './map-2d.component.html',
+  styleUrls: ['./map-2d.component.less']
+})
+export class Map2dComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy {
+
+
+  @HostBinding('style.height.px')
+  @Input() height = 200;
+  @ViewChild('container') node: ElementRef;
+
+  @Input() data;
+
+  heatMap: any;
+
+  map: any;
+
+  @Input() radius: number = 50;
+
+  constructor(private http: Http) {
+  }
+
+  ngOnInit() {
+  }
+
+
+  ngAfterViewInit(): void {
+    this.init();
+  }
+
+  init() {
+    this.map = L.map(this.node.nativeElement, {
+      // crs: L.CRS.EPSG900913,
+      // crs: L.CRS.EPSG4326,
+
+      // [ 118.508191	28.904561]
+
+
+      center: new L.LatLng(25.6586, -80.3568),
+      zoom: 16,
+      renderer: L.canvas(),
+      zoomControl: false,
+      attributionControl: false
+    });
+
+
+    const layer = L.tileLayer('http://mt0.google.cn/vt/lyrs=m@160000000&hl=zh-CN&gl=CN&src=app&y={y}&x={x}&z={z}&s=Ga');
+
+    layer.addTo(this.map);
+
+    /*
+        L.tileLayer('http://nokia/{y}/{x}/{z}').addTo(this.map);*/
+
+
+    this.ihb('s');
+    /*  const xx = L.heatLayer([...sss], {radius: 50}).addTo(this.map);*/
+  }
+
+
+  panTo(x, y) {
+    console.log('x:' + x + 'y:' + y);
+  }
+
+
+  ngOnChanges(changes: SimpleChanges): void {
+
+
+    const {data} = changes;
+    console.log(data);
+
+    if (data) {
+      console.log('sss');
+    }
+
+    /* if (changes.hasOwnProperty('data') && !changes.data.firstChange) {
+       this.chart.changeData(changes.data.currentValue);
+     }*/
+  }
+
+  ngOnDestroy(): void {
+    this.node.nativeElement.innerHTML = '';
+  }
+
+  /**
+   *
+   *
+   * a   normal
+   *
+   * b   fast
+   */
+  iha() {
+
+  }
+
+  cha() {
+  }
+
+  ihb(data) {
+
+
+    const sss = [[28.969921, 118.871771],
+      [28.902652, 118.509676],
+      [28.902652, 118.509676],
+      [28.902652, 118.509676],
+      [28.902652, 118.509676],
+      [28.905011, 118.518421],
+      [28.905011, 118.518421],
+      [28.905011, 118.518421],
+      [28.901711, 118.514371],
+      [28.901711, 118.514371],
+      [28.901711, 118.514371],
+      [28.908171, 118.506921],
+      [28.908171, 118.506921],
+      [28.904561, 118.508191],
+      [28.904561, 118.508191],
+      [28.904561, 118.508191],
+      [28.904281, 118.510891],
+      [28.904281, 118.510891],
+      [28.904281, 118.510891],
+      [28.901831, 118.521301],
+      [28.901831, 118.521301],
+      [28.901831, 118.521301],
+      [28.901241, 118.518331],
+      [28.901241, 118.518331],
+      [28.901241, 118.518331],
+      [28.905661, 118.516721],
+      [28.905661, 118.516721],
+      [28.905661, 118.516721],
+      [28.900801, 118.509211],
+      [28.900801, 118.509211],
+      [28.900801, 118.509211],
+      [28.971981, 118.85666],
+      [28.904441, 118.514371],
+      [28.904441, 118.514371],
+      [28.904441, 118.514371],
+      [28.902333, 118.506441],
+      [28.906931, 118.512571],
+      [28.906931, 118.512571],
+      [28.906931, 118.512571],
+      [28.901901, 118.512891],
+      [28.901901, 118.512891],
+      [28.901901, 118.512891],
+      [28.968641, 118.931851],
+      [28.968641, 118.931851],
+      [28.968641, 118.931851],
+      [28.968641, 118.931851]];
+
+
+    this.http.get('assets/test/mockData.json').subscribe(ss => {
+      const _data = ss.data.map(item => [item.lat, item.lng, item.value]);
+      console.log(_data);
+      this.heatMap = L.heatLayer([..._data, ..._data, ..._data, ..._data, ..._data, ..._data], {
+        radius: this.radius,
+        max: 8
+      }).addTo(this.map);
+    });
+    // const _data = data.map(item => [item.lat, item.lng, item.value]);
+    //  this.heatMap = L.heatLayer([...sss], {radius: 50}).addTo(this.map);
+
+  }
+
+
+  chb() {
+    this.heatMap.remove();
+  }
+}

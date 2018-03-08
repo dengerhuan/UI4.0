@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {BarDataSet} from '../../shared/chart/bar/bar.component';
 
 
 @Component({
@@ -11,25 +12,35 @@ export class PageComponent implements OnInit {
   value = 10;
   _dateRange = [null, null];
   rankingListData: any[] = [];
-  data = [
-    {genre: 'xwa', sold: 275},
-    {genre: 'asdaw', sold: 115},
-    {genre: 'Action', sold: 120},
-    {genre: 'Shooter', sold: 350},
-    {genre: 'ss', sold: 150},
-    {genre: '1dsa', sold: 275},
-    {genre: 'Strategy', sold: 115},
-    {genre: '1', sold: 120},
-    {genre: 'Shooter', sold: 350},
-    {genre: 'Other', sold: 150},
-    {genre: '112', sold: 275},
-    {genre: 'saw', sold: 115},
-    {genre: '123', sold: 120},
-    {genre: '12312424', sold: 350},
-    {genre: '2c', sold: 150}
+  data: BarDataSet[] = [
+    {x: 'xwa', y: 275},
+    {x: 'asdaw', y: 115},
+    {x: 'Action', y: 120},
+    {x: 'Shooter', y: 350},
+    {x: 'ss', y: 150},
+    {x: '1dsa', y: 275},
+    {x: 'Strategy', y: 115},
+    {x: '1', y: 120},
+    {x: 'Shooter', y: 350},
+    {x: 'Other', y: 150},
+    {x: '112', y: 275},
+    {x: 'saw', y: 115},
+    {x: '123', y: 120},
+    {x: '12312424', y: 350},
+    {x: '2c', y: 150}
   ]; // G2 对数据源格式的要求，仅仅是 JSON 数组，数组的每个元素是一个标准 JSON 对象。
 
 
+  piedata = [
+    {item: '事例一', count: 40},
+    {item: '事例二', count: 21},
+    {item: '事例三', count: 17},
+    {item: '事例四', count: 13},
+    {item: '事例五', count: 9},
+    {item: '事例一', count: 40},
+    {item: '事例二1', count: 21},
+    {item: '事例三2', count: 17}
+  ];
 
   constructor() {
 

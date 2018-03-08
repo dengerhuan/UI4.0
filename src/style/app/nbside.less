@@ -11,11 +11,10 @@
   overflow: hidden;
   overflow-scrolling: touch;
   border-right: 1px solid @border-base;
-
+  -webkit-overflow-scrolling : touch;
   &-wrapper {
     overflow-x: hidden;
     height: ~'calc(100% - 64px)';
-    margin-right: -17px;
     overflow-y: scroll;
   }
 }
@@ -127,6 +126,7 @@
       .@{side-nav-prefix}-sub {
         display: block;
         animation: fadeIn .5s;
+
       }
 
     }
@@ -140,7 +140,10 @@
 
   &-float-container {
     position: absolute;
-    z-index: @side-zindex+5;
+    /*兼容leaflet
+     导航菜单应该在最上层
+    */
+    z-index: @side-zindex+400;
     min-width: 160px;
     border: 1px solid @content-head-border;
     background-color: @side-bg;

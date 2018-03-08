@@ -1,4 +1,36 @@
 <nz-card>
+  <ng-template #title> 工单进展</ng-template>
+
+  <ng-template #extra>
+    <div>
+      <nz-dropdown>
+        <i nz-dropdown class="fa fa-bars"></i>
+        <ul nz-menu>
+          <li nz-menu-item>退回</li>
+          <li nz-menu-item>催一下</li>
+        </ul>
+      </nz-dropdown>
+    </div>
+  </ng-template>
+  <ng-template #body>
+    <nz-steps [(nzCurrent)]="current">
+      <nz-step [nzTitle]="'下发工单'" [nzDescription]="'This is a description.'"></nz-step>
+      <nz-step [nzTitle]="'正在处理'" [nzDescription]="nzDescription">
+        <ng-template #nzDescription>
+          <p>This is a description.</p>
+          <!-- <nz-progress [ngModel]="30" [nzStrokeWidth]="5"></nz-progress>-->
+          <nb-mini-progress></nb-mini-progress>
+        </ng-template>
+      </nz-step>
+      <nz-step [nzTitle]="'完成'" [nzDescription]="'This is a description.'"></nz-step>
+    </nz-steps>
+  </ng-template>
+</nz-card>
+
+
+<nz-card>
+
+  <ng-template #title> 工单员联系方式</ng-template>
   <ng-template #body>
 
     <nz-table #nzTable [nzDataSource]="tdata" [nzPageSize]="10" nzScroll="{x:2000,y:300}">
@@ -55,18 +87,20 @@
 
 
     <div nz-row [nzGutter]="16">
+
       <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12">
-        <nb-pie [height]="300" [title]="'用户数'" [data]="data"></nb-pie>
+        <nb-pie [height]="300" [data]="piedata" [title]="'用户数'" [innerText]="false" [data]="data"></nb-pie>
       </div>
 
       <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12">
-        <nb-line [height]="300" [title]="'用户数'" [data]="data"></nb-line>
+        <nb-line [height]="300" [data]="piedata" [title]="'用户数'"></nb-line>
       </div>
+
+
     </div>
 
   </ng-template>
 </nz-card>
-
 
 
 <nz-card>
@@ -80,12 +114,12 @@
 
 <nz-card [nzLoading]="loading" [nzBordered]="false">
 
-  <ng-template #title> 销售额类别占比</ng-template>
+  <ng-template #title> 事件分布</ng-template>
 
   <ng-template #extra>
     <div>
       <nz-dropdown>
-        <i nz-dropdown class="anticon anticon-step-backward"></i>
+        <i nz-dropdown class="fa fa-bars"></i>
         <ul nz-menu>
           <li nz-menu-item>操作一</li>
           <li nz-menu-item>操作二</li>
@@ -105,10 +139,24 @@
 
     <div nz-row [nzGutter]="16">
 
-      <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="8">
+
+      <div nz-col [nzXs]="24" [nzSm]="8" [nzMd]="8" [nzLg]="9">
+        <nb-pie [height]="300" [data]="piedata" [title]="'用户数'" [innerText] [data]="data"></nb-pie>
+      </div>
+
+      <div nz-col [nzXs]="24" [nzSm]="8" [nzMd]="8" [nzLg]="9">
+        <nb-line [height]="300" [data]="piedata" [title]="'用户数'"></nb-line>
+      </div>
+
+
+      <div nz-col nzXs="24" nzSm="8" nzMd="8" nzLg="6">
         <nb-rank-list [title]="'综合排名'" [data]="rankingListData"></nb-rank-list>
       </div>
     </div>
 
   </ng-template>
 </nz-card>
+
+
+<!---->
+

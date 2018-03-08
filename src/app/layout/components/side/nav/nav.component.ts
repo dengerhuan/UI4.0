@@ -49,7 +49,7 @@ export class NavComponent implements OnInit {
     node.id = id;
     this.render.addClass(node, this.CONTAINERCLS);
     node.addEventListener('mouseleave', () => {
-      this.render.removeClass(node, this.CONTAINESHOW);
+      this.hideAll();
     }, false);
     this.render.appendChild(this.containerEl, node);
     return node;
@@ -64,11 +64,33 @@ export class NavComponent implements OnInit {
    */
 
   hideAll() {
-    const nodes = this.containerEl.querySelectorAll('.' + this.CONTAINESHOW);
-    for (let i = 0; i < nodes.length; i++) {
-      this.render.removeClass(nodes[i], this.CONTAINESHOW);
-    }
+    this.containerEl.innerHTML = '';
   }
+
+  /*
+    hideAll() {
+      //const nodes = Array.from(this.containerEl.querySelectorAll('.' + this.CONTAINESHOW));
+
+      console.log(this.containerEl.children)
+
+      const nodes = this.containerEl.children;
+
+      /!*   Array.from(this.containerEl.children).forEach(item => {
+
+           item['style.top'] = 0;
+           // this.render.setStyle(item, 'style.top', 0);
+         });
+     *!/
+      for (let i = 0; i < nodes.length; i++) {
+        //   this.render.removeClass(nodes[i], this.CONTAINESHOW);
+
+        nodes[i]['style.top'] = 0;
+        console.log(nodes[i]['style.top']);
+        this.render.setStyle(nodes[i], 'style.top', 0);
+        console.log(nodes[i]);
+      }
+    }
+  */
 
   /**
    * 子菜单鼠标移动监听
@@ -107,12 +129,10 @@ export class NavComponent implements OnInit {
 
 
   toggleOpen(menu: Menu) {
-   /* console.log(menu)*/
     this.menus.menus.forEach(item => {
-      console.log(item)
       item.children.forEach(ii => {
         ii._open = false;
-      })
+      });
     });
     menu._open = !menu._open;
   }

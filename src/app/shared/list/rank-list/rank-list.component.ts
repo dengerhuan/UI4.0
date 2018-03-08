@@ -29,9 +29,6 @@ export class RankListComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() data: any[] = [];
 
   constructor() {
-    setTimeout(() => {
-      this._current = 2;
-    }, 3000);
   }
 
   ngOnInit() {
@@ -39,7 +36,6 @@ export class RankListComponent implements OnInit, AfterViewInit, OnChanges {
 
 
   changeData() {
-
     this._data = this.data.slice((this._current - 1) * this.pageSize, this._current * this.pageSize);
   }
 

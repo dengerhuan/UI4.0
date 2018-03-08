@@ -20,8 +20,6 @@ export class LineComponent implements OnInit, AfterViewInit, OnChanges, OnDestro
   _titleTpl: TemplateRef<any>;
 
 
-  @Input() innerText = true;
-
   @Input()
   set title(value: string | TemplateRef<any>) {
     if (value instanceof TemplateRef) {
@@ -31,6 +29,7 @@ export class LineComponent implements OnInit, AfterViewInit, OnChanges, OnDestro
     }
   }
 
+  @Input() data: any[];
 
   @ViewChild('container') node: ElementRef;
 
@@ -52,84 +51,31 @@ export class LineComponent implements OnInit, AfterViewInit, OnChanges, OnDestro
   ngOnInit() {
   }
 
-  @Input() data = [];
 
   ngAfterViewInit(): void {
 
 
-    const data = [
-      {item: '事例一', count: 40},
-      {item: '事例二', count: 21},
-      {item: '事例三', count: 17},
-      {item: '事例四', count: 13},
-      {item: '事例五', count: 9},
-      {item: '事例一', count: 40},
-      {item: '事例二1', count: 21},
-      {item: '事例三2', count: 17}
-    ];
-
-
-    console.log(Object.assign({}, ...data.map(item => {
-      console.log(item)
-    })));
-
-
-    const chart = new G2.Chart({
+    this.chart = new G2.Chart({
       container: this.node.nativeElement,
       forceFit: true,
       height: +this.height - 22,
-      padding: [30, 20, 40, 40],
+      padding: [30, 20, 'auto', 40],
     });
-    chart.source(data, {});
+    this.chart.source(this.data, {});
 
-
-    chart.legend(true, {
+    this.chart.legend(true, {
       position: 'right',
-
       itemFormatter: (val) => {
-        console.log(val);
         return val + ' | ';
       }
     })
-    /*   chart.intervalStack()
-         .position('count')
-         .color('item')
-         .label('count', {
-           formatter: (val, item) => {
-             return this.innerText ? val : item.point.item + ': ' + val;
-           }, offset: -20,
-           // autoRotate: false,
-           textStyle: {
-             rotate: 0,
-             textAlign: 'center',
-             shadowBlur: 2,
-             fill: 'rgba(0, 0, 0, .5)',
-             shadowColor: 'rgba(0, 0, 0, .45)'
-           }
-         })
-   */
-    chart.line().position('item*count');
-    //
-    chart.point().position('item*count').size(4).shape('circle').style({
+    this.chart.line().position('item*count');
+    this.chart.point().position('item*count').size(4).shape('circle').style({
       stroke: '#fff',
       lineWidth: 1
     });
 
-
-    chart.render();
-
-    /*   this.chart = new G2.Chart({
-         container: this.node.nativeElement,
-         height: +this.height - 22,
-         forceFit: true,
-         padding: [20, 'auto', 40, 'auto']
-       });
-
-       this.chart.legend(false)
-       this.chart.source(this.data);
-       this.chart.interval().position('genre*sold').color('genre')
-       this.chart.render();*/
-
+    this.chart.render();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -139,7 +85,8 @@ export class LineComponent implements OnInit, AfterViewInit, OnChanges, OnDestro
   }
 
   ngOnDestroy(): void {
-    if (this.chart)
+    if (this.chart) {
       this.chart.destroy();
+    }
   }
 }

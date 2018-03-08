@@ -55,9 +55,10 @@ import {
   NzNotificationService,
   NzMessageService
 } from 'ng-zorro-antd';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {shared_components} from './index';
+
 
 const ZORROMODULES = [
   // LoggerModule,
@@ -118,9 +119,10 @@ const sharedModule = [];
     FormsModule,
     ...ZORROMODULES,
     ...sharedModule,
+    ReactiveFormsModule
   ],
   declarations: [...shared_components],
-  exports: [...ZORROMODULES, RouterModule, FormsModule, ...sharedModule, ...shared_components]
+  exports: [...ZORROMODULES, RouterModule, FormsModule, ...sharedModule, ReactiveFormsModule, ...shared_components]
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders {

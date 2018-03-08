@@ -1,0 +1,19 @@
+<nz-card>
+
+  <ng-template #title>访问历史</ng-template>
+  <ng-template #body>
+
+    <nz-table #nzTable [nzDataSource]="user.urlcache" [nzPageSize]="10" nzScroll="{x:2000,y:300}">
+      <thead nz-thead>
+      <tr>
+        <th nz-th><span>访问地址</span></th>
+      </tr>
+      </thead>
+      <tbody nz-tbody>
+      <tr nz-tbody-tr *ngFor="let url of nzTable.data">
+        <td nz-td>{{url}}</td>
+      </tr>
+      </tbody>
+    </nz-table>
+  </ng-template>
+</nz-card>

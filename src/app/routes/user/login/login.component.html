@@ -1,0 +1,42 @@
+<div class="logcontainer">
+
+
+  <nz-card style="width:100%;" nzBordered="false">
+    <ng-template #title>
+      <a>
+        <img class="expanded" src="./assets/img/logo-full-cmcc.svg" style="max-height:40px;"/>
+      </a>
+    </ng-template>
+
+    <ng-template #body>
+
+
+      <form nz-form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+        <div nz-form-item>
+          <div nz-form-control>
+            <nz-input>
+              <ng-template #prefix>
+                <i class="fa fa-user-o"></i>
+              </ng-template>
+            </nz-input>
+          </div>
+        </div>
+
+        <div nz-form-item>
+          <div nz-form-control>
+            <nz-input formControlName="username">
+              <ng-template #prefix>
+                <i class="fa fa-key"></i>
+              </ng-template>
+            </nz-input>
+          </div>
+        </div>
+
+        <button class="sub" nz-button type="submit" [nzType]="'primary'" [nzSize]="'large'">login</button>
+      </form>
+    </ng-template>
+  </nz-card>
+
+</div>
+
+

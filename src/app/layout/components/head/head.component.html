@@ -25,3 +25,25 @@
     </li>
   </ul>
 </div>
+
+
+<ul class="top-nav">
+  <!--menu-->
+
+  <li class="sm-hidden-wrap">
+    <div class="item">
+      <nz-dropdown nzTrigger="click">
+        <div nz-dropdown style="width: 100px">
+          <nz-avatar class="avatar" [nzSrc]="'./assets/img/1.png'" [nzSize]="'large'"></nz-avatar>
+        </div>
+        <ul nz-menu>
+          <li nz-menu-item>name</li>
+          <li nz-menu-item>set</li>
+          <li nz-menu-item>age</li>
+          <li nz-menu-item (click)="userService.clear()">注销用户</li>
+          <li nz-menu-item (click)="userService.logout()">退出用户</li>
+        </ul>
+      </nz-dropdown>
+    </div>
+  </li>
+</ul>

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {SettingService} from '../../../core/services/setting.service';
+import {UserService} from "../../../core/services/user.service";
 
 @Component({
   selector: 'nb-head',
@@ -8,7 +9,7 @@ import {SettingService} from '../../../core/services/setting.service';
 })
 export class HeadComponent implements OnInit {
 
-  constructor(public setting: SettingService) {
+  constructor(public setting: SettingService, public  userService: UserService) {
   }
 
   ngOnInit() {

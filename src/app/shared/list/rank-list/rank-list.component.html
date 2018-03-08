@@ -10,7 +10,13 @@
       <span>{{i.total}}</span>
     </li>
   </ul>
-  <nz-pagination [nzTotal]="data.length" (nzPageIndexChange)="changeData()" [(nzPageIndex)]="_current"></nz-pagination>
+  <nz-pagination
+    [nzTotal]="data.length"
+    (nzPageIndexChange)="changeData()"
+    [nzPageSize]="pageSize"
+    [(nzPageIndex)]="_current"
+    [nzSize]="'small'">
+  </nz-pagination>
 </div>
 
 

@@ -1,0 +1,82 @@
+import {AfterViewInit, Component, ElementRef, HostBinding, Input, OnInit, ViewChild} from '@angular/core';
+
+@Component({
+  selector: 'nb-map-2d',
+  templateUrl: './map-2d.component.html',
+  styleUrls: ['./map-2d.component.less']
+})
+export class Map2dComponent implements OnInit, AfterViewInit {
+
+
+  @HostBinding('style.height.px')
+  @Input() height = 200;
+  @ViewChild('container') node: ElementRef;
+
+  @Input() fastHeatMap = false;
+
+  map: any;
+
+  constructor() {
+  }
+
+  ngOnInit() {
+  }
+
+
+  ngAfterViewInit(): void {
+    this.init();
+  }
+
+  init() {
+    this.map = L.map(this.node.nativeElement, {
+
+      center: new L.LatLng(25.6586, -80.3568),
+      zoom: 4,
+      renderer: L.canvas(),
+      zoomControl: false,
+      attributionControl: false
+    });
+
+
+    const layer = L.tileLayer('http://mt0.google.cn/vt/lyrs=m@160000000&hl=zh-CN&gl=CN&src=app&y={y}&x={x}&z={z}&s=Ga');
+
+    layer.addTo(this.map);
+
+    /*
+
+        L.tileLayer('http://nokia/{y}/{x}/{z}').addTo(this.map);
+
+      L.marker([28.970791, 118.843621]).addTo(this.map)
+        .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+        .openPopup()
+  */
+
+    this.heatmap();
+
+  }
+
+
+  heatmap() {
+
+
+
+    const cfg = {
+      radius: 2,
+      maxOpacity: .8,
+      scaleRadius: true,
+      useLocalExtrema: true,
+      latField: 'lat',
+      lngField: 'lng',
+      valueField: 'count'
+    };
+
+
+    const heatmapLayer = new HeatmapOverlay(cfg).addTo(this.map);
+    heatmapLayer.setData(testData);
+  }
+
+  panTo(x, y) {
+    console.log('x:' + x + 'y:' + y);
+  }
+
+}
