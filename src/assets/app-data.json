@@ -22,7 +22,7 @@
           "children": [
             {
               "text": "简单的列子",
-              "link": "/",
+              "link": "/bus/page",
               "translate": "dashboard_v1"
             },
             {
@@ -93,6 +93,10 @@
           "icon": "icon-chemistry",
           "acl": "role-a",
           "children": [
+            {
+              "text": "head-pro",
+              "link": "/component/head"
+            },
             {
               "text": "按钮",
               "link": "/elements/buttons",

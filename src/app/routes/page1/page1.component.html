@@ -12,6 +12,7 @@
       </nz-dropdown>
     </div>
   </ng-template>
+
   <ng-template #body>
     <nz-steps [(nzCurrent)]="current">
       <nz-step [nzTitle]="'下发工单'" [nzDescription]="'This is a description.'"></nz-step>
@@ -33,7 +34,7 @@
   <ng-template #title> 工单员联系方式</ng-template>
   <ng-template #body>
 
-    <nz-table #nzTable [nzDataSource]="tdata" [nzPageSize]="10" nzScroll="{x:2000,y:300}">
+    <nz-table #nzTable [nzDataSource]="tdata" [nzPageSize]="10" >
       <thead nz-thead>
       <tr>
         <th nzCheckbox nz-th [nzWidth]="wid"><span>Name</span></th>
@@ -130,12 +131,12 @@
 
   <ng-template #body>
 
-    <nz-radio-group class="marginB-sm" [(ngModel)]="salesType" (ngModelChange)="toast()" [nzSize]="'large'">
+  <!--  <nz-radio-group class="marginB-sm" [nzSize]="'large'">
       <label nz-radio-button [nzValue]="'all'"><span>区域</span></label>
       <label nz-radio-button [nzValue]="'online'"><span>栅格</span></label>
       <label nz-radio-button [nzValue]="'offline'"><span>小区</span></label>
     </nz-radio-group>
-
+-->
 
     <div nz-row [nzGutter]="16">
 

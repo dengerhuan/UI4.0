@@ -1,0 +1,26 @@
+<nz-breadcrumb>
+
+
+  <nz-breadcrumb-item *ngFor="let pos of position">
+    {{pos}}
+  </nz-breadcrumb-item>
+
+</nz-breadcrumb>
+
+
+<div class="detail">
+  <div *ngIf="img" class="logo">
+    <img [src]="img">
+  </div>
+  <div class="main">
+    <h1 *ngIf="title">{{title}}</h1>
+    <p *ngIf="subTitle">{{subTitle}}</p>
+  </div>
+  <div *ngIf="extra" class="extra">
+
+    <ng-template [ngTemplateOutlet]="extra"></ng-template>
+  </div>
+</div>
+<ng-content></ng-content>
+<ng-template [ngTemplateOutlet]="footer"></ng-template>
+

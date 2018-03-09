@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {HttpClient, /*HttpErrorResponse*/} from '@angular/common/http';
 
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/toPromise';
@@ -88,6 +88,33 @@ export class MenuService {
   }
 
   get menus() {
+
     return this._menus;
   }
+
+
+  public getDes(url: string) {
+
+    let group;
+    let module;
+    let text;
+
+
+    for (const _group of this.menus) {
+      group = _group.text;
+      for (const _module of _group.children) {
+        module = _module.text;
+
+        for (const _link of _module.children) {
+          text = _link.text;
+          if (_link.link === url) {
+            return {group, module, text};
+          }
+        }
+      }
+    }
+
+
+  }
+
 }

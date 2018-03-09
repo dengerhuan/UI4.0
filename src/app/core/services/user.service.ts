@@ -5,6 +5,8 @@ import {WebCacheService} from './web-cache.service';
 
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
+import {MenuService} from './menu.service';
+import {Time} from "@angular/common";
 
 
 const USER = 'user';
@@ -30,6 +32,15 @@ interface UserServiceImp {
   islogin();
 }
 
+
+interface UserHistory {
+  url;
+  time;
+  text;
+  group;
+  module;
+}
+
 @Injectable()
 export class UserService implements UserServiceImp {
 
@@ -37,23 +48,40 @@ export class UserService implements UserServiceImp {
 
   private _lastvisit;
 
-  constructor(private cache: WebCacheService, private router: Router, private  title: Title) {
+  constructor(private cache: WebCacheService, private router: Router, private  title: Title, private menu: MenuService) {
 
     this.router.events.filter(event => event instanceof NavigationEnd).map(route => {
-      const {urlAfterRedirects} = route as NavigationEnd;
-      return urlAfterRedirects;
+      console.log(route)
+      const {url, urlAfterRedirects} = route as NavigationEnd;
+      return url;
     }).filter(url => url !== '/user/login').subscribe(route => {
-      this.setUrlcache(route);
+
+      console.log(title.getTitle())
+
+
+      const url = this.menu.getDes(route);
+
+      if (!!url) {
+        console.log(url);
+        const {group, module, text} = this.menu.getDes(route);
+        this.title.setTitle(`${module}-${text}` || 'HOME');
+        this.setUrlcache({
+          group, module, text, time: new Date(), url: route
+        });
+      }
+
+
       this.lastvisit = route;
+
     });
 
-    this.title.getTitle();
+
   }
 
-  private setUrlcache(url: string) {
-    if (this.urlcache.indexOf(url) > -1) {
-      return;
-    }
+  private setUrlcache(url: object) {
+    /*   if (this.urlcache.indexOf(url) > -1) {
+         return;
+       }*/
     this.urlcache.push(url);
     this.cache.setItem(URL, this.urlcache);
   }
@@ -105,7 +133,11 @@ export class UserService implements UserServiceImp {
   }
 
   navtologin() {
-    this.router.navigate(['user/login']);
+    this.nav('/user/login');
+  }
+
+  nav(url) {
+    this.router.navigate([url]);
   }
 
   islogin() {

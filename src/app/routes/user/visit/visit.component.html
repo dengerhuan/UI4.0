@@ -1,17 +1,34 @@
-<nz-card>
+<nb-nav-head [title]="'用户访问记录'">
 
+</nb-nav-head>
+
+
+<nz-card>
   <ng-template #title>访问历史</ng-template>
   <ng-template #body>
-
-    <nz-table #nzTable [nzDataSource]="user.urlcache" [nzPageSize]="10" nzScroll="{x:2000,y:300}">
+    <nz-table #nzTable [nzDataSource]="cache" [nzPageSize]="8" nzScroll="{x:2000,y:300}">
       <thead nz-thead>
       <tr>
-        <th nz-th><span>访问地址</span></th>
+        <th nz-th><span>组名</span></th>
+        <th nz-th><span>模块名</span></th>
+        <th nz-th><span>标题</span></th>
+        <th nz-th><span>访问时间</span></th>
+        <th nz-th><span>地址</span></th>
+        <th nz-th><span>操作</span></th>
       </tr>
       </thead>
       <tbody nz-tbody>
       <tr nz-tbody-tr *ngFor="let url of nzTable.data">
-        <td nz-td>{{url}}</td>
+        <td nz-td>{{url.group}}</td>
+        <td nz-td>{{url.module}}</td>
+        <td nz-td>{{url.text}}</td>
+        <td nz-td>{{url.time |date:'yyyy-MM-dd HH:mm' }}</td>
+        <td nz-td>{{url.url}}</td>
+        <td nz-td>
+          <button nz-button [nzType]="'primary'" (click)="user.nav(url.url)">
+            访问
+          </button>
+        </td>
       </tr>
       </tbody>
     </nz-table>

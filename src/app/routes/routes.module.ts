@@ -8,6 +8,8 @@ import {Page1Component} from './page1/page1.component';
 import {MapComponent} from './map/map.component';
 import {AuthGuard} from '../shared/guard/auth.guard';
 import {LoginComponent, VisitComponent} from './user';
+import { ProheadComponent } from './prohead/prohead.component';
+import { ProjectComponent } from './project/project/project.component';
 
 
 @NgModule({
@@ -16,7 +18,7 @@ import {LoginComponent, VisitComponent} from './user';
     SharedModule,
     RouterModule.forRoot(routes, {useHash: true}),
   ],
-  declarations: [PageComponent, Page1Component, MapComponent, LoginComponent, VisitComponent],
+  declarations: [PageComponent, Page1Component, MapComponent, LoginComponent, VisitComponent, ProheadComponent, ProjectComponent],
   exports: [RouterModule],
   providers: [AuthGuard]
 })

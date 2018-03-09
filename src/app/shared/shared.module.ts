@@ -59,7 +59,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {shared_components} from './index';
 
-
 const ZORROMODULES = [
   // LoggerModule,
   // NzLocaleModule,

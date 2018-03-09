@@ -8,8 +8,15 @@ import {UserService} from '../../../core/services/user.service';
 })
 export class VisitComponent implements OnInit {
 
+
+  cache = [];
+
   constructor(public user: UserService) {
-    console.log(user.urlcache);
+
+    for (let i of user.urlcache) {
+      this.cache.unshift(i);
+    }
+
   }
 
   ngOnInit() {

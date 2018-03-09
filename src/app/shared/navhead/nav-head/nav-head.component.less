@@ -1,0 +1,63 @@
+.card(@spacing) {
+  position: relative;
+  transition: all .3s;
+  margin: 0 -@spacing @spacing -@spacing;
+  padding: @spacing @spacing 0 @spacing;
+  display: block;
+  border: 1px solid #e9e9e9;
+  background: #fff;
+  border-radius: 2px;
+  font-size: 12px;
+}
+
+:host {
+  .card(16px);
+  ::ng-deep {
+
+    .detail {
+      display: flex;
+      padding: 16px 0;
+      .logo {
+        /*    flex: 0 1 auto;*/
+        margin-right: 16px;
+        > img {
+          @px: 68px;
+          background: #49a9ee;
+          width: @px;
+          height: @px;
+          border-radius: @px / 2;
+          display: block;
+
+        }
+      }
+      .main {
+
+        flex: auto;
+        > h1 {
+          font-weight: 500;
+        }
+        p {
+          color: rgba(0, 0, 0, 0.4);
+          font-size: 12px;
+          line-height: 28px;
+        }
+      }
+      .extra {
+        flex: 0 1 600px;
+      }
+    }
+    .ant-card-body {
+      padding: 16px;
+    }
+  }
+
+}
+
+/*{
+.ant-avatar {
+  border-radius: 72px;
+  display: block;
+  width: 72px;
+  height: 72px;
+}
+}*/

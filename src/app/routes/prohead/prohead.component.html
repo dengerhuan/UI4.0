@@ -1,0 +1,57 @@
+<nb-nav-head [title]="11231" [subTitle]="'chichichcichichci'" [img]="img">
+
+  <nz-input style="width: 200px;margin: 0 auto;display: block" [(ngModel)]="inputValue" [nzPlaceHolder]="'Basic usage'"
+            (ngModelChange)="toa($event)"></nz-input>
+  <ng-template #footer>
+    <nz-badge [nzStatus]="'success'"></nz-badge>
+  </ng-template>
+  <ng-template #extra>
+    <nb-map-2d #map
+               [height]="100">
+    </nb-map-2d>
+  </ng-template>
+</nb-nav-head>
+
+
+<nb-nav-head [title]="'开发爸爸你好'" [subTitle]="'写代码的会上天'" [img]="img">
+
+  <ng-template #extra>
+
+
+    <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'">
+<!--      <div nz-col [nzSpan]="3" class="text-center">
+                <span class="ant-avatar ant-avatar-lg ant-avatar-circle ant-avatar-icon bg-primary">
+                    <i class="icon-speedometer"></i>
+                </span>
+      </div>-->
+
+
+      <div nz-col [nzSpan]="3">
+        <nz-avatar nzSize="large" [nzSrc]="img"></nz-avatar>
+      </div>
+      <div nz-col [nzSpan]="6">
+        <strong>10</strong> 个
+        <p class="text-grey">开发任务</p>
+      </div>
+      <!--
+            <nz-avatar [nzText]="text" nzSize="large" [ngStyle]="{'background-color':color}"></nz-avatar>-->
+      <div nz-col [nzSpan]="5">
+        <nz-badge [nzStatus]="'success'"></nz-badge>
+        已完成
+        <span class="">3</span>
+      </div>
+      <div nz-col [nzSpan]="5">
+        <nz-badge [nzStatus]="'processing'"></nz-badge>
+        正在进行
+        <span class=" ">5</span>
+      </div>
+      <div nz-col [nzSpan]="5">
+        <nz-badge [nzStatus]="'error'"></nz-badge>
+        已失败
+        <span class=" ">2</span>
+      </div>
+    </div>
+  </ng-template>
+</nb-nav-head>
+
+

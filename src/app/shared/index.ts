@@ -5,8 +5,8 @@ import {
 import {RankListComponent} from './list';
 import {CardComponent} from './card/card.component';
 import {TileComponent} from './tile/tile.component';
-import {NavToolsComponent} from './nav-tools/nav-tools.component';
 import {Map2dComponent, Map3dComponent} from './map';
+import {NavHeadComponent, NavToolsComponent} from './navhead';
 
 export const shared_components = [
   MiniProgressComponent,
@@ -21,4 +21,6 @@ export const shared_components = [
   LineComponent,
   Map3dComponent,
   Map2dComponent,
+  NavToolsComponent,
+  NavHeadComponent
 ];

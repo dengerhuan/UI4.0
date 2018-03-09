@@ -39,7 +39,7 @@
         <ul nz-menu>
           <li nz-menu-item>name</li>
           <li nz-menu-item>set</li>
-          <li nz-menu-item>age</li>
+          <li nz-menu-item (click)="userService.nav('/user/visit')">访问历史</li>
           <li nz-menu-item (click)="userService.clear()">注销用户</li>
           <li nz-menu-item (click)="userService.logout()">退出用户</li>
         </ul>
