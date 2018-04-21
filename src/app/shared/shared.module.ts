@@ -58,6 +58,8 @@ import {
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {shared_components} from './index';
+import {CardNoPaddingDirective} from './directive/card-no-padding.directive';
+
 
 const ZORROMODULES = [
   // LoggerModule,
@@ -120,8 +122,9 @@ const sharedModule = [];
     ...sharedModule,
     ReactiveFormsModule
   ],
-  declarations: [...shared_components],
-  exports: [...ZORROMODULES, RouterModule, FormsModule, ...sharedModule, ReactiveFormsModule, ...shared_components]
+  declarations: [...shared_components, CardNoPaddingDirective],
+  exports: [...ZORROMODULES, RouterModule, FormsModule, ...sharedModule, CardNoPaddingDirective, ReactiveFormsModule, ...shared_components],
+  entryComponents: [...shared_components]
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders {

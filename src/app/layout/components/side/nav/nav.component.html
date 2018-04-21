@@ -10,16 +10,26 @@
     <ng-container *ngFor="let child1 of group.children">
       <li [class.side-nav-submenu-open]="child1._open" [routerLinkActive]="['side-nav-item-selected']">
         <!-- link -->
-        <a target="{{ child1.target }}" class="side-nav-sub-title"
+        <a *ngIf="child1.group" class="side-nav-sub-title"
            (click)="toggleOpen(child1)"
            (mouseenter)="showSubMenu($event, child1)">
           <i class="{{ child1.icon }}"></i>
-
-
           <span>{{ child1.text }}</span>
         </a>
 
-        <ul class="side-nav side-nav-sub side-nav-depth1">
+        <!-- link -->
+        <a *ngIf="!child1.group" [routerLink]="child1.link">
+          <i *ngIf="!setting.layout.collapsed" class="{{ child1.icon }}"></i>
+
+          <nz-tooltip *ngIf="setting.layout.collapsed" [nzTitle]=" child1.text" [nzPlacement]="'right'">
+            <i nz-tooltip class="{{ child1.icon }}"></i>
+          </nz-tooltip>
+          <span>{{ child1.text }}</span>
+        </a>
+        <!-- external link -->
+        <!--target="{{ child1.target }}" -->
+
+        <ul *ngIf="child1.group" class="side-nav side-nav-sub side-nav-depth1">
           <ng-container *ngFor="let child2 of child1.children">
             <li>
               <!-- link -->
@@ -30,8 +40,6 @@
             </li>
           </ng-container>
         </ul>
-
-
       </li>
 
 

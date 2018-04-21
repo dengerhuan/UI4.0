@@ -2,13 +2,13 @@ import {
   AfterViewInit, Component, ElementRef, HostBinding, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, TemplateRef,
   ViewChild
 } from '@angular/core';
-import {SettingService} from "../../../core/services/setting.service";
+import {SettingService} from '../../../core/services/setting.service';
 
 
 @Component({
   selector: 'nb-line',
   template: `
-    <ng-container *ngIf="_title; else _titleTpl"><h4>{{_title}}</h4></ng-container>
+    <ng-container *ngIf="_title; else _titleTpl"><h4> {{ _title }} </h4></ng-container>
     <div #container></div>
   `,
   styleUrls: ['./line.component.less']
@@ -61,16 +61,19 @@ export class LineComponent implements OnInit, AfterViewInit, OnChanges, OnDestro
       height: +this.height - 22,
       padding: [30, 20, 'auto', 40],
     });
-    this.chart.source(this.data, {});
+    this.chart.source(this.data, {
+      tickInterval: 5, // 自定义刻度间距
+    });
 
     this.chart.legend(true, {
       position: 'right',
       itemFormatter: (val) => {
         return val + ' | ';
       }
-    })
+    });
+
     this.chart.line().position('item*count');
-    this.chart.point().position('item*count').size(4).shape('circle').style({
+    this.chart.point().position('item*count').size(2).shape('circle').style({
       stroke: '#fff',
       lineWidth: 1
     });

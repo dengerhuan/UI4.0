@@ -7,23 +7,23 @@
       </div>
       <div nz-col [nzSpan]="6">
         <strong>10</strong> 个
-        <p class="text-grey">开发任务</p>
+        <p>开发任务</p>
       </div>
 
       <div nz-col [nzSpan]="5">
         <nz-badge [nzStatus]="'success'"></nz-badge>
         已完成
-        <span class="">3</span>
+        <span>3</span>
       </div>
       <div nz-col [nzSpan]="5">
         <nz-badge [nzStatus]="'processing'"></nz-badge>
         正在进行
-        <span class=" ">5</span>
+        <span>5</span>
       </div>
       <div nz-col [nzSpan]="5">
         <nz-badge [nzStatus]="'error'"></nz-badge>
         已失败
-        <span class=" ">2</span>
+        <span>2</span>
       </div>
     </div>
   </ng-template>
@@ -31,12 +31,8 @@
 
 <div nz-row [nzGutter]="16">
   <div nz-col [nzSpan]="12">
-
-
     <nz-card>
       <ng-template #body>
-
-
         <form nz-form [formGroup]="validateForm" (ngSubmit)="_submitForm()">
           <div nz-form-item nz-row *ngFor="let control of controlArray;let i = index">
             <div nz-form-label nz-col [nzSpan]="4" *ngIf="i==0">
@@ -83,3 +79,20 @@
 
   </div>
 </div>
+
+
+<nz-card>
+  <ng-template #body>
+    <form [nzLayout]="'inline'" nz-form>
+      <nb-tag-box [title]="'时间选择'" [expand]="false">
+        <nz-checkable-tag *ngFor="let tag of hotTags" [style.display]="tag.show?'':'none'"
+                          [nzChecked]="selectedTags.indexOf(tag) > -1" (nzChange)="handleChange($event, tag)">
+          {{tag.text}}
+        </nz-checkable-tag>
+
+      </nb-tag-box>
+    </form>
+  </ng-template>
+</nz-card>
+
+111{{cache.getItem('GEO')}}

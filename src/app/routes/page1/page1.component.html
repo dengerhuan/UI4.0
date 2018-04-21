@@ -30,11 +30,27 @@
 
 
 <nz-card>
+  <ng-template #title> 当前工单明细</ng-template>
+  <ng-template #body>
+    <nz-timeline>
+      <nz-timeline-item>创建工单</nz-timeline-item>
+      <nz-timeline-item>工单以接受，处理人员：张三</nz-timeline-item>
+      <nz-timeline-item>与业主协调:处理暂未完成</nz-timeline-item>
+      <nz-timeline-item>完成工单处理</nz-timeline-item>
+      <ng-template #pending>
+        <a>待归档</a>
+      </ng-template>
+    </nz-timeline>
+  </ng-template>
+</nz-card>
+
+
+<nz-card>
 
   <ng-template #title> 工单员联系方式</ng-template>
   <ng-template #body>
 
-    <nz-table #nzTable [nzDataSource]="tdata" [nzPageSize]="10" >
+    <nz-table #nzTable [nzDataSource]="tdata" [nzPageSize]="10">
       <thead nz-thead>
       <tr>
         <th nzCheckbox nz-th [nzWidth]="wid"><span>Name</span></th>
@@ -94,12 +110,9 @@
       </div>
 
       <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12">
-        <nb-line [height]="300" [data]="piedata" [title]="'用户数'"></nb-line>
+        <nb-line [height]="300" [data]="piedatas" [title]="'用户数'"></nb-line>
       </div>
-
-
     </div>
-
   </ng-template>
 </nz-card>
 
@@ -131,12 +144,12 @@
 
   <ng-template #body>
 
-  <!--  <nz-radio-group class="marginB-sm" [nzSize]="'large'">
-      <label nz-radio-button [nzValue]="'all'"><span>区域</span></label>
-      <label nz-radio-button [nzValue]="'online'"><span>栅格</span></label>
-      <label nz-radio-button [nzValue]="'offline'"><span>小区</span></label>
-    </nz-radio-group>
--->
+    <!--  <nz-radio-group class="marginB-sm" [nzSize]="'large'">
+        <label nz-radio-button [nzValue]="'all'"><span>区域</span></label>
+        <label nz-radio-button [nzValue]="'online'"><span>栅格</span></label>
+        <label nz-radio-button [nzValue]="'offline'"><span>小区</span></label>
+      </nz-radio-group>
+  -->
 
     <div nz-row [nzGutter]="16">
 

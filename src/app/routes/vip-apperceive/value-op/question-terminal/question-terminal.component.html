@@ -1,0 +1,91 @@
+<nb-nav-tools class="content-title"></nb-nav-tools>
+
+
+<div nz-row [nzGutter]="0">
+
+
+  <div nz-col [nzXs]="24" [nzSm]="8" [nzMd]="8" [nzLg]="8">
+
+    <nz-card [nzBordered]="false">
+      <ng-template #title>异常VoLTE终端</ng-template>
+      <ng-template #body>
+        <nb-line [height]="200" [data]="piedata" [title]="'感知评分'"></nb-line>
+        <nb-line [height]="200" [data]="piedata" [title]="'用户数'"></nb-line>
+      </ng-template>
+    </nz-card>
+  </div>
+
+
+  <div nz-col [nzXs]="24" [nzSm]="8" [nzMd]="8" [nzLg]="8">
+
+    <nb-map-2d [height]="495"></nb-map-2d>
+
+  </div>
+
+
+  <div nz-col [nzXs]="24" [nzSm]="8" [nzMd]="8" [nzLg]="8">
+    <nz-card [nzBordered]="false">
+      <ng-template #title>异常HTTP终端</ng-template>
+      <ng-template #body>
+        <nb-line [height]="200" [data]="piedata" [title]="'感知评分'"></nb-line>
+        <nb-line [height]="200" [data]="piedata" [title]="'用户数'"></nb-line>
+      </ng-template>
+    </nz-card>
+  </div>
+
+</div>
+
+
+<div nz-row [nzGutter]="8">
+  <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12">
+    <nz-card nbCardNoPadding>
+      <ng-template #body>
+
+        <nz-table #nzTable [nzDataSource]="volted" [nzPageSize]="5" nzBordered>
+          <thead nz-thead>
+          <tr>
+            <th nz-th><span>终端品牌</span></th>
+            <th nz-th><span>VoLTE评分</span></th>
+            <th nz-th><span>VoLTE用户数</span></th>
+
+          </tr>
+          </thead>
+          <tbody nz-tbody>
+          <tr *ngFor="let item of nzTable.data">
+            <td>{{item[0]}}</td>
+            <td>{{item[2]}}</td>
+            <td>{{item[1]}}</td>
+          </tr>
+          </tbody>
+        </nz-table>
+
+      </ng-template>
+    </nz-card>
+  </div>
+
+  <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12">
+    <nz-card nbCardNoPadding>
+      <ng-template #body>
+
+        <nz-table #nzTable [nzDataSource]="httpd" [nzPageSize]="5" nzBordered>
+          <thead nz-thead>
+          <tr>
+            <th nz-th><span>终端品牌</span></th>
+            <th nz-th><span>VoLTE评分</span></th>
+            <th nz-th><span>VoLTE用户数</span></th>
+
+          </tr>
+          </thead>
+          <tbody nz-tbody>
+          <tr *ngFor="let item of nzTable.data">
+            <td>{{item[0]}}</td>
+            <td>{{item[2]}}</td>
+            <td>{{item[1]}}</td>
+          </tr>
+          </tbody>
+        </nz-table>
+
+      </ng-template>
+    </nz-card>
+  </div>
+</div>

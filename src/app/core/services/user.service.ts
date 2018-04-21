@@ -6,7 +6,7 @@ import {WebCacheService} from './web-cache.service';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import {MenuService} from './menu.service';
-import {Time} from "@angular/common";
+
 
 
 const USER = 'user';
@@ -51,7 +51,7 @@ export class UserService implements UserServiceImp {
   constructor(private cache: WebCacheService, private router: Router, private  title: Title, private menu: MenuService) {
 
     this.router.events.filter(event => event instanceof NavigationEnd).map(route => {
-      console.log(route)
+
       const {url, urlAfterRedirects} = route as NavigationEnd;
       return url;
     }).filter(url => url !== '/user/login').subscribe(route => {

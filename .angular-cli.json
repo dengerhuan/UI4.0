@@ -19,12 +19,15 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "nb",
       "styles": [
-        "styles.less"
+        "styles.less",
+        "../lib/OSMBuildings.css"
       ],
       "scripts": [
+        "../lib/geojson-vt-dev.js",
         "../lib/heatmap.min.js",
         "../lib/leaflet-heatmap.js",
-        "../lib/leaflet-heat.js"
+        "../lib/leaflet-heat.js",
+        "../lib/OSMBuildings.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

@@ -1,0 +1,58 @@
+<nb-nav-tools class="content-title"></nb-nav-tools>
+
+
+<nz-card>
+  <ng-template #body>
+
+    <div nz-row [nzGutter]="16">
+
+      <!--left-->
+      <div nz-col [nzXs]="24" [nzSm]="8" [nzMd]="8" [nzLg]="8">
+        <div nz-row [nzGutter]="8">
+          <nb-line [height]="200" [data]="piedata" [title]="'HTTP用户感知'"></nb-line>
+        </div>
+
+        <div nz-row [nzGutter]="8">
+          <nb-line [height]="200" [data]="piedata" [title]="'VoLTE用户感知'"></nb-line>
+        </div>
+
+      </div>
+
+      <!--for map-->
+
+      <div nz-col [nzXs]="24" [nzSm]="8" [nzMd]="8" [nzLg]="8">
+        <nb-map-2d [height]="400"></nb-map-2d>
+      </div>
+
+
+      <!--for rght-->
+      <div nz-col [nzXs]="24" [nzSm]="8" [nzMd]="8" [nzLg]="8">
+
+
+        <nb-line [height]="200" [data]="piedata" [title]="'流量趋势'"></nb-line>
+
+
+        <nb-line [height]="200" [data]="piedata" [title]="'活跃用户数'"></nb-line>
+
+
+      </div>
+
+    </div>
+
+  </ng-template>
+</nz-card>
+
+
+<nz-card >
+  <ng-template #body>
+    <div nz-row [nzGutter]="8">
+      <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12">
+
+        <nb-bar [height]="200" [data]="data" [title]="'高用户小区'"></nb-bar>
+      </div>
+      <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12">
+        <nb-bar [height]="200" [data]="data" [title]="'终端用户'"></nb-bar>
+      </div>
+    </div>
+  </ng-template>
+</nz-card>

@@ -1,0 +1,37 @@
+<nb-nav-tools class="content-title"></nb-nav-tools>
+
+
+<nz-card>
+  <ng-template #body>
+
+    <nb-bar [height]="300" [data]="data" [title]="'用户感知评分'"></nb-bar>
+
+  </ng-template>
+</nz-card>
+
+
+<div nz-row [nzGutter]="16">
+  <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12">
+    <nz-card>
+      <ng-template #title>HTTP性能</ng-template>
+      <ng-template #body>
+        <nb-line [height]="200" [data]="piedata" [title]="'接入性评分'"></nb-line>
+        <nb-line [height]="200" [data]="piedata" [title]="'保持性评分'"></nb-line>
+        <nb-line [height]="200" [data]="piedata" [title]="'完整性评分'"></nb-line>
+      </ng-template>
+    </nz-card>
+  </div>
+  <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12">
+    <nz-card>
+      <ng-template #title>VoLTE性能</ng-template>
+      <ng-template #body>
+        <nb-line [height]="200" [data]="piedata" [title]="'接入性评分'"></nb-line>
+        <nb-line [height]="200" [data]="piedata" [title]="'保持性评分'"></nb-line>
+        <nb-line [height]="200" [data]="piedata" [title]="'完整性评分'"></nb-line>
+      </ng-template>
+    </nz-card>
+  </div>
+
+
+</div>
+

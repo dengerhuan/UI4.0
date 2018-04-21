@@ -17,7 +17,7 @@
         {
           "text": "仪表盘",
           "translate": "dashboard",
-          "link": "/dashboard",
+          "group": true,
           "icon": "icon-speedometer",
           "children": [
             {
@@ -26,18 +26,13 @@
               "translate": "dashboard_v1"
             },
             {
-              "text": "进度条",
-              "link": "/bus/page/1",
-              "translate": "dashboard_analysis"
-            },
-            {
-              "text": "Monitor",
-              "link": "/dashboard/monitor",
+              "text": "搜索项目",
+              "link": "/project/search",
               "translate": "dashboard_monitor"
             },
             {
-              "text": "Workplace",
-              "link": "/dashboard/workplace",
+              "text": "工作台",
+              "link": "/project/workbench",
               "translate": "dashboard_workplace"
             }
           ]
@@ -46,24 +41,19 @@
           "text": "快捷菜单",
           "translate": "shortcut",
           "icon": "icon-rocket",
-          "shortcut_root": true,
+          "group": true,
           "children": [
             {
               "text": "进度条",
-              "link": "/bus/page/1",
+              "link": "/bus/online",
               "translate": "dashboard_monitor"
-            },
-            {
-              "text": "Workplace",
-              "link": "/bus/page/1",
-              "translate": "dashboard_workplace"
             }
           ]
         },
         {
           "text": "小部件",
           "translate": "widgets",
-          "link": "/widgets",
+          "group": true,
           "icon": "icon-grid",
           "children": [
             {
@@ -76,8 +66,61 @@
               "link": "/dashboard/workplace",
               "translate": "dashboard_workplace"
             }
-          ],
-          "badge": 2
+          ]
+        }
+      ]
+    },
+    {
+      "text": "VIP感知",
+      "translate": "component",
+      "group": true,
+      "children": [
+        {
+          "text": "全网概况",
+          "translate": "elements",
+          "link": "/bus/vip/full",
+          "icon": "icon-chemistry"
+        },
+        {
+          "text": "价值优化",
+          "translate": "forms",
+          "link": "/forms",
+          "icon": "icon-note",
+          "group": true,
+          "children": [
+            {
+              "text": "问题区域",
+              "link": "/bus/vip/ques-area",
+              "translate": "standard"
+            },
+            {
+              "text": "问题终端",
+              "link": "/bus/vip/ques-terminal",
+              "translate": "extended"
+            },
+            {
+              "text": "问题sp",
+              "link": "/bus/vip/ques-sp",
+              "translate": "validation"
+            },
+            {
+              "text": "区域价值查询",
+              "link": "/bus/vip/area-value",
+              "translate": "upload"
+            }
+          ]
+        },
+        {
+          "text": "集团客户",
+          "translate": "charts",
+          "group": true,
+          "icon": "icon-graph",
+          "children": [
+            {
+              "text": "集团A",
+              "link": "/bus/vip/group/a"
+            }
+          ]
         }
       ]
     },
@@ -89,7 +132,7 @@
         {
           "text": "基础元素",
           "translate": "elements",
-          "link": "/elements",
+          "group": true,
           "icon": "icon-chemistry",
           "acl": "role-a",
           "children": [
@@ -169,7 +212,7 @@
         {
           "text": "表单",
           "translate": "forms",
-          "link": "/forms",
+          "group": true,
           "icon": "icon-note",
           "acl": "role-a",
           "children": [
@@ -204,7 +247,7 @@
         {
           "text": "Charts",
           "translate": "charts",
-          "link": "/charts",
+          "group": true,
           "icon": "icon-graph",
           "acl": "role-a",
           "children": [
@@ -217,7 +260,7 @@
         {
           "text": "表格",
           "translate": "tables",
-          "link": "/tables",
+          "group": true,
           "icon": "icon-grid",
           "acl": "role-b",
           "children": [
@@ -236,7 +279,7 @@
         {
           "text": "地图",
           "translate": "maps",
-          "link": "maps",
+          "group": true,
           "icon": "icon-map",
           "acl": "role-b",
           "children": [
@@ -260,122 +303,11 @@
       "group": true,
       "children": [
         {
-          "text": "Form Page",
-          "translate": "form",
-          "link": "/pro/form",
-          "icon": "icon-note",
-          "children": [
-            {
-              "text": "Step Form",
-              "link": "/pro/form/step-form",
-              "translate": "step-form"
-            },
-            {
-              "text": "Advanced Form",
-              "link": "/pro/form/advanced-form",
-              "translate": "advanced-form"
-            }
-          ]
-        },
-        {
-          "text": "List",
-          "translate": "pro-list",
-          "link": "/pro/list",
-          "icon": "icon-grid",
-          "children": [
-            {
-              "text": "Table List",
-              "link": "/pro/list/table-list",
-              "translate": "pro-table-list"
-            },
-            {
-              "text": "Basic List",
-              "link": "/pro/list/basic-list",
-              "translate": "pro-basic-list"
-            },
-            {
-              "text": "Card List",
-              "link": "/pro/list/card-list",
-              "translate": "pro-card-list"
-            },
-            {
-              "text": "Cover Card List",
-              "link": "/pro/list/cover-card-list",
-              "translate": "pro-cover-card-list"
-            },
-            {
-              "text": "Filter Card List",
-              "link": "/pro/list/filter-card-list",
-              "translate": "pro-filter-card-list"
-            },
-            {
-              "text": "Search",
-              "link": "/pro/list/search",
-              "translate": "pro-search"
-            }
-          ]
-        },
-        {
-          "text": "Profile",
-          "translate": "pro-profile",
-          "link": "/pro/profile",
-          "icon": "icon-book-open",
-          "children": [
-            {
-              "text": "Basic",
-              "link": "/pro/profile/basic",
-              "translate": "pro-profile-basic"
-            },
-            {
-              "text": "Advanced",
-              "link": "/pro/profile/advanced",
-              "translate": "pro-profile-advanced"
-            }
-          ]
-        },
-        {
-          "text": "Result",
-          "translate": "pro-result",
-          "link": "/pro/result",
-          "icon": "icon-check",
-          "children": [
-            {
-              "text": "Success",
-              "link": "/pro/result/success",
-              "translate": "pro-result-success"
-            },
-            {
-              "text": "Fail",
-              "link": "/pro/result/fail",
-              "translate": "pro-result-fail"
-            }
-          ]
-        },
-        {
-          "text": "Exception",
-          "translate": "pro-exception",
-          "link": "/pro/exception",
-          "icon": "icon-fire",
-          "children": [
-            {
-              "text": "403",
-              "link": "/pro/exception/403"
-            },
-            {
-              "text": "404",
-              "link": "/pro/exception/404"
-            },
-            {
-              "text": "500",
-              "link": "/pro/exception/500"
-            }
-          ]
-        },
-        {
           "text": "User",
           "translate": "pro-user",
           "link": "/pro/user",
           "icon": "icon-user",
+          "group": true,
           "children": [
             {
               "text": "登录",
@@ -386,147 +318,6 @@
               "text": "历史记录",
               "link": "/user/visit",
               "translate": "pro-register"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "text": "More",
-      "translate": "more",
-      "group": true,
-      "children": [
-        {
-          "text": "Common Logics",
-          "translate": "logics",
-          "link": "/logics",
-          "icon": "icon-compass",
-          "children": [
-            {
-              "text": "ACL",
-              "link": "/logics/acl",
-              "translate": "acl"
-            },
-            {
-              "text": "Route Guard",
-              "link": "/logics/guard",
-              "translate": "guard",
-              "acl": "admin"
-            },
-            {
-              "text": "Down File",
-              "link": "/logics/downfile",
-              "translate": "downfile",
-              "shortcut": true
-            }
-          ]
-        },
-        {
-          "text": "Report",
-          "translate": "report",
-          "icon": "anticon anticon-cloud-o",
-          "children": [
-            {
-              "text": "Relation",
-              "link": "/data-v/relation",
-              "translate": "relation",
-              "target": "_blank",
-              "shortcut": true
-            }
-          ]
-        },
-        {
-          "text": "Pages",
-          "translate": "pages",
-          "link": "/pages",
-          "icon": "icon-doc",
-          "acl": "admin",
-          "children": [
-            {
-              "text": "Login",
-              "link": "/login",
-              "translate": "m-login"
-            },
-            {
-              "text": "Register",
-              "link": "/register",
-              "translate": "m-register"
-            },
-            {
-              "text": "Forget",
-              "link": "/forget",
-              "translate": "m-forget"
-            },
-            {
-              "text": "Lock",
-              "link": "/lock",
-              "translate": "m-lock"
-            },
-            {
-              "text": "404",
-              "link": "/404"
-            },
-            {
-              "text": "500",
-              "link": "/500"
-            },
-            {
-              "text": "Maintenance",
-              "link": "/maintenance",
-              "translate": "maintenance"
-            }
-          ]
-        },
-        {
-          "text": "Extras",
-          "translate": "extras",
-          "link": "/extras",
-          "icon": "icon-cup",
-          "children": [
-            {
-              "text": "Blog",
-              "link": "/extras/blog",
-              "translate": "blog",
-              "children": [
-                {
-                  "text": "List",
-                  "link": "/extras/blog/list",
-                  "translate": "list",
-                  "badge": 1,
-                  "badge_dot": true
-                },
-                {
-                  "text": "Comment",
-                  "link": "/extras/blog/comment",
-                  "translate": "comment"
-                },
-                {
-                  "text": "Post",
-                  "link": "/extras/blog/post",
-                  "translate": "post"
-                },
-                {
-                  "text": "WebSite",
-                  "externalLink": "//github.com/cipchk/ng-alain",
-                  "target": "_blank",
-                  "translate": "website"
-                }
-              ]
-            },
-            {
-              "text": "Help Center",
-              "link": "/extras/helpcenter",
-              "translate": "helpcenter"
-            },
-            {
-              "text": "Settings",
-              "link": "/extras/settings",
-              "translate": "settings"
-            },
-            {
-              "text": "Poi",
-              "link": "/extras/poi",
-              "translate": "poi"
             }
           ]
         }

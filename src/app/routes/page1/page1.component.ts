@@ -38,7 +38,35 @@ export class Page1Component implements OnInit {
     {item: '事例五', count: 9},
     {item: '事例一', count: 40},
     {item: '事例二1', count: 21},
-    {item: '事例三2', count: 17}
+    {item: '事例三2', count: 17},
+  ];
+
+
+
+  piedatas = [
+    {item: '事例一', count: 40},
+    {item: '事例二', count: 21},
+    {item: '事例三', count: 17},
+    {item: '事例四', count: 13},
+    {item: '事例五', count: 9},
+    {item: '事例一', count: 40},
+    {item: '事例二1', count: 21},
+    {item: '事例三2', count: 17},
+    {item: '事例四3', count: 13},
+    {item: '事例五4', count: 9},
+    {item: '事例一5', count: 40},
+    {item: '事例二61', count: 21},
+    {item: '事例三42', count: 17},
+    {item: '事例四657', count: 13},
+    {item: '事例五12412', count: 9},
+    {item: '事例一34', count: 40},
+    {item: '事例二3231', count: 21},
+    {item: '事例三22s', count: 17},
+    {item: '事例四xx', count: 13},
+    {item: '事例五as', count: 9},
+    {item: '事例一rf', count: 40},
+    {item: '事例二1we', count: 21},
+    {item: '事例三2q', count: 17},
   ];
 
 

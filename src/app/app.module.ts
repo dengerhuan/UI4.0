@@ -18,7 +18,7 @@ import {RoutesModule} from './routes/routes.module';
     LayoutModule,
     BrowserAnimationsModule,
     SharedModule.forRoot(),
-    CoreModule,
+    CoreModule.forRoot(),
     RoutesModule
   ],
   providers: [],

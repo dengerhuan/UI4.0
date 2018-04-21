@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {TemCacheService} from "../../../core/services/tem-cache.service";
 
 @Component({
   selector: 'nb-project',
@@ -9,9 +10,19 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 export class ProjectComponent implements OnInit {
   img = 'http://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png';
 
+  public hotTags = [];
+  public selectedTags = [];
 
   validateForm: FormGroup;
   controlArray = [];
+
+
+  constructor(private fb: FormBuilder, public cache: TemCacheService) {
+    for (let i = 0; i < 60; i++) {
+      this.hotTags.push({show: true, text: `${i}项目`});
+
+    }
+  }
 
   addField(e?: MouseEvent) {
     if (e) {
@@ -49,7 +60,16 @@ export class ProjectComponent implements OnInit {
     console.log(this.validateForm.value);
   }
 
-  constructor(private fb: FormBuilder) {
+
+  toggle() {
+
+    this.hotTags.forEach((c, i) => {
+      if (i > 6) {
+        c.show = !c.show;
+      } else {
+        c.show = true;
+      }
+    });
   }
 
   ngOnInit() {
@@ -57,4 +77,12 @@ export class ProjectComponent implements OnInit {
     this.addField();
   }
 
+  handleChange(checked: boolean, tag: string): void {
+    if (checked) {
+      this.selectedTags.push(tag);
+    } else {
+      this.selectedTags = this.selectedTags.filter(t => t !== tag);
+    }
+    console.log('You are interested in: ', this.selectedTags);
+  }
 }

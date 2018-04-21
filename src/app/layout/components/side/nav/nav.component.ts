@@ -25,7 +25,7 @@ export class NavComponent implements OnInit {
 
 
   ngOnInit() {
-    console.log(this.menus.menus);
+    /*    console.log(this.menus.menus);*/
     this.genContainer();
   }
 
@@ -130,7 +130,7 @@ export class NavComponent implements OnInit {
 
   toggleOpen(menu: Menu) {
     this.menus.menus.forEach(item => {
-      item.children.forEach(ii => {
+      item.children.filter(it => it !== menu).forEach(ii => {
         ii._open = false;
       });
     });

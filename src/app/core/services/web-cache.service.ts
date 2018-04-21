@@ -25,8 +25,6 @@ export class WebCacheService {
       const msg = this.storage.getItem(key);
       return JSON.parse(msg);
     }
-
-
   }
 
   public clear() {

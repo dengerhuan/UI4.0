@@ -1,0 +1,69 @@
+<nb-nav-head [title]="'程序员'" [subTitle]="'写代码的会上天'" [img]="img">
+
+  <ng-template #extra>
+    <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'">
+      <div nz-col [nzSpan]="3">
+        <nz-avatar nzSize="large" [nzSrc]="'./assets/img/avatar.jpg'"></nz-avatar>
+      </div>
+      <div nz-col [nzSpan]="6">
+        <strong>10</strong> 个
+        <p>开发任务</p>
+      </div>
+
+      <div nz-col [nzSpan]="5">
+        <nz-badge [nzStatus]="'success'"></nz-badge>
+        已完成
+        <span>3</span>
+      </div>
+      <div nz-col [nzSpan]="5">
+        <nz-badge [nzStatus]="'processing'"></nz-badge>
+        正在进行
+        <span>5</span>
+      </div>
+      <div nz-col [nzSpan]="5">
+        <nz-badge [nzStatus]="'error'"></nz-badge>
+        已失败
+        <span>2</span>
+      </div>
+    </div>
+  </ng-template>
+</nb-nav-head>
+
+
+<nz-card>
+  <ng-template #body>
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="_onsubmit(validateForm)">
+      <nb-tag-box [title]="'项目选择'" [expand]="true" (toggle)="projectExpanede=$event">
+        <nz-checkable-tag *ngFor="let tag of hotTags ;index as i" [style.display]=" projectExpanede&&i>7?'none':''">
+          {{ tag.text }}
+        </nz-checkable-tag>
+      </nb-tag-box>
+
+
+      <nb-tag-box [title]="'时间'">
+
+        <nz-datepicker formControlName="date" [nzPlaceHolder]="'Select date'"></nz-datepicker>
+        -
+        <nz-datepicker formControlName="date" [nzPlaceHolder]="'Select date'"></nz-datepicker>
+
+
+      </nb-tag-box>
+
+      <nb-tag-box [title]="'关键字'">
+
+        <nz-input style="width: 200px;" [nzPlaceHolder]="'输入关键字'"></nz-input>
+
+      </nb-tag-box>
+
+      <div nz-form-item style="text-align: right">
+        <div nz-form-control>
+          <button nz-button [nzType]="'primary'" [nzSize]="'large'">Submit</button>
+        </div>
+      </div>
+
+    </form>
+  </ng-template>
+</nz-card>
+
+
+<div #body></div>

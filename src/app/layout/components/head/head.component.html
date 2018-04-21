@@ -29,7 +29,11 @@
 
 <ul class="top-nav">
   <!--menu-->
-
+  <li>
+    <div class="item" (click)="thememodel=!thememodel">
+      <i nz-dropdown class="fa fa-cog fa-3x"></i>
+    </div>
+  </li>
   <li class="sm-hidden-wrap">
     <div class="item">
       <nz-dropdown nzTrigger="click">
@@ -47,3 +51,59 @@
     </div>
   </li>
 </ul>
+
+
+<!--设置菜单-->
+
+<nz-modal [nzVisible]="thememodel"
+          [nzTitle]="modalTitle"
+          [nzContent]="modalContent"
+          [nzFooter]="modalFooter"
+          (nzOnCancel)="handleCancel($event)">
+
+
+  <ng-template #modalTitle>
+    <h4 style="color: rgba(0,0,0,0.5)">
+      <i nz-dropdown class="fa fa-cog"> 系统设置</i>
+    </h4>
+
+  </ng-template>
+
+  <ng-template #modalContent>
+
+    <form nz-form [nzType]="'horizontal'">
+
+
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6">
+          <label nz-form-text="">主题设置</label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="14">
+          <ul nz-menu>
+            <ng-container *ngFor="let theme of themes">
+
+              <nz-avatar (click)="setTheme(theme.t)" [style.background]="theme.color" [nzSize]="'small'">
+              </nz-avatar>
+            </ng-container>
+          </ul>
+        </div>
+      </div>
+
+
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6">
+          <label>开启缓存</label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="14">
+          <nz-switch></nz-switch>
+        </div>
+      </div>
+    </form>
+  </ng-template>
+
+  <ng-template #modalFooter>
+    <button nz-button [nzType]="'primary'" [nzSize]="'large'" (click)="handleCancel($event)">
+      提 交
+    </button>
+  </ng-template>
+</nz-modal>

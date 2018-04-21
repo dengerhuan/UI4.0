@@ -1,0 +1,71 @@
+<nb-nav-tools class="content-title"></nb-nav-tools>
+
+
+<nz-card nbCardNoPadding>
+  <ng-template #body>
+    <nb-map-2d [height]="400"></nb-map-2d>
+  </ng-template>
+</nz-card>
+
+<div nz-row [nzGutter]="8">
+
+  <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12">
+    <nz-card nbCardNoPadding>
+      <ng-template #body>
+
+        <nz-table #nzTable [nzDataSource]="httpd" [nzPageSize]="5" nzBordered>
+          <thead nz-thead>
+          <tr>
+            <th nz-th colspan="3"><span>HTTP失败</span></th>
+          </tr>
+          <tr>
+            <th nz-th><span>HOST</span></th>
+            <th nz-th><span>失败用户数</span></th>
+            <th nz-th><span>失败次数</span></th>
+          </tr>
+          </thead>
+          <tbody nz-tbody>
+          <tr *ngFor="let item of nzTable.data">
+            <td>{{item[0]}}</td>
+            <td>{{item[1]}}</td>
+            <td>{{item[2]}}</td>
+          </tr>
+          </tbody>
+        </nz-table>
+      </ng-template>
+    </nz-card>
+  </div>
+
+
+  <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12">
+    <nz-card nbCardNoPadding>
+      <ng-template #body>
+
+        <nz-table #nzTable [nzDataSource]="tcpd" [nzPageSize]="5" nzBordered>
+          <thead nz-thead>
+          <tr>
+            <th nz-th colspan="4"><span>TCP链接失败</span></th>
+          </tr>
+          <tr>
+            <th nz-th><span>HOST</span></th>
+            <th nz-th><span>PORT</span></th>
+            <th nz-th><span>失败用户数</span></th>
+            <th nz-th><span>失败次数</span></th>
+          </tr>
+          </thead>
+          <tbody nz-tbody>
+          <tr *ngFor="let item of nzTable.data">
+            <td>{{item[0]}}</td>
+            <td>{{item[1]}}</td>
+            <td>{{item[3]}}</td>
+            <td>{{item[2]}}</td>
+          </tr>
+          </tbody>
+        </nz-table>
+
+      </ng-template>
+    </nz-card>
+  </div>
+
+
+</div>

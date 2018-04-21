@@ -1,0 +1,14 @@
+<div nz-form-item
+     style="position:relative;display: flex;border-bottom: 1px dashed rgba(0,0,0,0.2);padding-bottom: 8px">
+  <div nz-form-label style="flex: 0 0 80px">
+    <label>{{title}} </label>
+  </div>
+
+  <div nz-form-control style="flex: auto">
+    <ng-content></ng-content>
+  </div>
+
+  <a *ngIf="expandable" style="flex: 0 0 60px" (click)="_toggle()">{{expand?'收起':'展开'}}
+    <i class="fa fa-angle-{{expand?'up':'down'}}"></i>
+  </a>
+</div>
