@@ -1,27 +1,33 @@
 # Nb
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.4.
+一个大数据可视化的后台开发框架
 
-## Development server
+## 特性
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- 基于ant design 的视觉效果
+- 使用开箱即用的Angular 脚手架
+- 使用TypeScript 进行项目构建
 
-## Code scaffolding
+## 支持的环境
+- 最新版本的chrome以及firefox
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## 构建
 
-## Build
+使用 `npm run s` 或者 Angular 脚手架中 `ng serve` 
+## 技术栈
+- Angular cli
+- Angular
+- Typescript
+- leaflet
+- Alibaba  G2
+- ng-zorro-antd
+- Rxjs
+- font-awesome
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+## 截图
+![](./img/p1.png)
+![](./img/p2.png)
+![](./img/p3.png)
+![](./img/p4.png)
+![](./img/p5.png)
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
