@@ -2,6 +2,8 @@
 
 一个大数据可视化的后台开发框架
 
+[演示地址](http://1.nbexample.applinzi.com/dist/)
+
 ## 特性
 
 - 基于ant design 的视觉效果
