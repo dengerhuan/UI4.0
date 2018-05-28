@@ -11,6 +11,9 @@
 - 使用TypeScript 进行项目构建
 
 ## 支持的环境
+- ng-zorro-antd0.6不在更新，使用到的ng-zooro-ant会更新到0.7版本
+
+## 依赖更新
 - 最新版本的chrome以及firefox
 
 ## 构建
