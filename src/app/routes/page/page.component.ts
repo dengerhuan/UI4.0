@@ -1,6 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {BarDataSet} from '../../shared/chart/bar/bar.component';
-
 
 @Component({
   selector: 'nb-page',
@@ -12,7 +10,7 @@ export class PageComponent implements OnInit {
   value = 10;
   _dateRange = [null, null];
   rankingListData: any[] = [];
-  data: BarDataSet[] = [
+  data = [
     {x: 'xwa', y: 275},
     {x: 'asdaw', y: 115},
     {x: 'Action', y: 120},

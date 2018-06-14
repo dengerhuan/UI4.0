@@ -37,15 +37,6 @@ export class LineComponent implements OnInit, AfterViewInit, OnChanges, OnDestro
   @Input() height = 200;
 
   constructor(setting: SettingService) {
-    /*  setting.unknownResize.subscribe(() => {
-        /!*   if (!!this.chart) {
-             this.chart.changeWidth(window.innerWidth);
-           }*!/
-      });
-      /!*
-          Observable.fromEvent(window, 'resize').debounceTime(200).subscribe(x => console.log(x + '11111111111212313123412431'));
-      *!/*/
-
   }
 
   ngOnInit() {
@@ -72,8 +63,8 @@ export class LineComponent implements OnInit, AfterViewInit, OnChanges, OnDestro
       }
     });
 
-    this.chart.line().position('item*count');
-    this.chart.point().position('item*count').size(2).shape('circle').style({
+    this.chart.line().position('x*y');
+    this.chart.point().position('x*y').size(2).shape('circle').style({
       stroke: '#fff',
       lineWidth: 1
     });

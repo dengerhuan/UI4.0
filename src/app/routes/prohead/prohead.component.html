@@ -1,7 +1,8 @@
 <nb-nav-head [title]="11231" [subTitle]="'chichichcichichci'" [img]="img">
 
-  <nz-input style="width: 200px;margin: 0 auto;display: block" [(ngModel)]="inputValue" [nzPlaceHolder]="'Basic usage'"
-            (ngModelChange)="toa($event)"></nz-input>
+  <input nz-input style="width: 200px;margin: 0 auto;display: block" [(ngModel)]="inputValue"
+         placeholder="'Basic usage'"
+         (ngModelChange)="toa($event)"/>
   <ng-template #footer>
     <nz-badge [nzStatus]="'success'"></nz-badge>
   </ng-template>
@@ -19,11 +20,11 @@
 
 
     <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'">
-<!--      <div nz-col [nzSpan]="3" class="text-center">
-                <span class="ant-avatar ant-avatar-lg ant-avatar-circle ant-avatar-icon bg-primary">
-                    <i class="icon-speedometer"></i>
-                </span>
-      </div>-->
+      <!--      <div nz-col [nzSpan]="3" class="text-center">
+                      <span class="ant-avatar ant-avatar-lg ant-avatar-circle ant-avatar-icon bg-primary">
+                          <i class="icon-speedometer"></i>
+                      </span>
+            </div>-->
 
 
       <div nz-col [nzSpan]="3">

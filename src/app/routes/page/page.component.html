@@ -1,9 +1,21 @@
 <nb-nav-tools class="content-title"></nb-nav-tools>
 
+
+<nb-tag-box title="项目选择" >
+  <nz-tag>
+     衢州
+  </nz-tag>
+
+  <nz-tag>
+    浙江
+  </nz-tag>
+</nb-tag-box>
+
 <div nz-row [nzGutter]="16">
   <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
     <nb-tile></nb-tile>
   </div>
+
   <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
     <nb-tile [icon]="'fa fa-university'"></nb-tile>
   </div>
@@ -42,87 +54,70 @@
 
 
 <nz-card>
-  <ng-template #body>
+  <nz-tabset nzSize="'small'" [nzTabBarExtraContent]="nzTabBarExtraContent">
+    <nz-tab nzTitle="趋势分析">
 
-
-    <nz-tabset nzSize="'small">
-      <nz-tab>
-        <ng-template #nzTabHeading>
-          市场
-        </ng-template>
-
-        <div nz-row [nzGutter]="16">
-          <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="9">
-            <nb-pie [height]="300" [data]="piedata" [title]="'用户数'" [innerText]="false" [data]="data"></nb-pie>
-          </div>
-          <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="9">
-            <nb-pie [height]="300" [data]="piedata" [title]="'用户数'" [innerText]="false" [data]="data"></nb-pie>
-          </div>
-          <div nz-col nzXs="24" nzSm="24" nzMd="8" nzLg="6">
-            <nb-rank-list [pageSize]="6" [title]="'综合排名'" [data]="rankingListData"></nb-rank-list>
-          </div>
+      <div nz-row [nzGutter]="16">
+        <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="9">
+          <nb-pie [height]="300" [data]="piedata" [title]="'用户数'" [innerText]="false" [data]="data"></nb-pie>
         </div>
-
-      </nz-tab>
-
-      <nz-tab>
-        <ng-template #nzTabHeading>
-          地理位置
-        </ng-template>
-
-
-        <div nz-row [nzGutter]="16">
-          <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="18">
-            <nb-map-2d [height]="400"></nb-map-2d>
-          </div>
-          <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="6">
-            <nb-rank-list [title]="'综合排名'" [pageSize]="9" [data]="rankingListData"></nb-rank-list>
-          </div>
+        <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="9">
+          <nb-pie [height]="300" [data]="piedata" [title]="'用户数'" [innerText]="false" [data]="data"></nb-pie>
         </div>
-      </nz-tab>
-
-
-      <nz-tab>
-        <ng-template #nzTabHeading>
-          工程
-        </ng-template>
-
-
-        <div nz-row [nzGutter]="16">
-          <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="18">
-            <nb-bar [height]="300" [data]="data" [title]="'干扰分布图'"></nb-bar>
-          </div>
-          <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="6">
-            <nb-rank-list [title]="'综合排名'" [data]="rankingListData"></nb-rank-list>
-          </div>
+        <div nz-col nzXs="24" nzSm="24" nzMd="8" nzLg="6">
+          <nb-rank-list [pageSize]="6" [title]="'综合排名'" [data]="rankingListData"></nb-rank-list>
         </div>
+      </div>
 
-      </nz-tab>
+    </nz-tab>
 
-      <ng-template #nzTabBarExtraContent>
+    <nz-tab nzTitle="分布分析">
 
 
-        <div class="sm-hidden-wrap">
-
-          <nz-datepicker style="width:120px" class="mr-md" [nzFormat]="'YYYY-MM-DD'"
-                         [nzPlaceHolder]="'开始日期'"></nz-datepicker>
-          <nz-datepicker style="width:120px" [nzFormat]="'YYYY-MM-DD'"
-                         [nzPlaceHolder]="'结束日期'"></nz-datepicker>
-
-          <nz-button-group>
-            <button nz-button (click)="setDate('today')">今日</button>
-            <button nz-button (click)="setDate('week')">本周</button>
-            <button nz-button (click)="setDate('month')">本月</button>
-          </nz-button-group>
-
+      <div nz-row [nzGutter]="16">
+        <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="18">
+          <nb-map-2d [height]="400"></nb-map-2d>
         </div>
+        <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="6">
+          <nb-rank-list [title]="'综合排名'" [pageSize]="9" [data]="rankingListData"></nb-rank-list>
+        </div>
+      </div>
+    </nz-tab>
 
 
-      </ng-template>
-    </nz-tabset>
+    <nz-tab nzTitle="终端分析">
+      <div nz-row [nzGutter]="16">
+        <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="18">
+          <nb-bar [height]="300" [data]="data" [title]="'干扰分布图'"></nb-bar>
+        </div>
+        <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="6">
+          <nb-rank-list [title]="'综合排名'" [data]="rankingListData"></nb-rank-list>
+        </div>
+      </div>
+    </nz-tab>
+
+    <ng-template #nzTabBarExtraContent>
 
 
-  </ng-template>
+      <div class="sm-hidden-wrap">
+
+        <nz-date-picker [nzSize]="size"></nz-date-picker>
+        <nz-date-picker [nzSize]="size"></nz-date-picker>
+
+        <button nz-button (click)="setDate('today')">查询</button>
+
+        <nz-button-group>
+          <button nz-button (click)="setDate('today')">今日</button>
+          <button nz-button (click)="setDate('week')">本周</button>
+          <button nz-button (click)="setDate('month')">本月</button>
+        </nz-button-group>
+
+      </div>
+
+    </ng-template>
+  </nz-tabset>
+
+
 </nz-card>
 
 
@@ -138,23 +133,111 @@
 -->
 
 
-<nz-card>
-  <ng-template #title> 事件分布图</ng-template>
-  <ng-template #body>
+<nz-card nzTitle="事件分布图">
 
-
-    <div nz-row [nzGutter]="16">
-      <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12">
-        <nb-pie [height]="300" [data]="piedata" [title]="'用户数'" [innerText]="false" [data]="data"></nb-pie>
-      </div>
-
-      <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12">
-        <nb-pie [height]="300" [data]="piedata" [title]="'用户数'" [innerText]="false" [data]="data"></nb-pie>
-      </div>
+  <div nz-row [nzGutter]="16">
+    <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12">
+      <nb-pie [height]="300" [data]="piedata" [title]="'用户数'" [innerText]="false" [data]="data"></nb-pie>
     </div>
 
-  </ng-template>
+    <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12">
+      <nb-pie [height]="300" [data]="piedata" [title]="'用户数'" [innerText]="false" [data]="data"></nb-pie>
+    </div>
+  </div>
+
 </nz-card>
 
 
 <!-------------------------------->
+
+<div nz-row [nzGutter]="16">
+  <div nz-col [nzSpan]="6">
+    <nz-card [nzCover]="coverTemplate" [nzActions]="[actionSetting,actionEdit,actionEllipsis]">
+      <nz-card-meta nzTitle="Card title" nzDescription="This is the description"
+                    [nzAvatar]="avatarTemplate"></nz-card-meta>
+    </nz-card>
+    <ng-template #avatarTemplate>
+      <nz-avatar nzSrc="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></nz-avatar>
+    </ng-template>
+    <ng-template #coverTemplate>
+      <img alt="example" src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"/>
+    </ng-template>
+    <ng-template #actionSetting>
+      <i class="anticon anticon-setting"></i>
+    </ng-template>
+    <ng-template #actionEdit>
+      <i class="anticon anticon-edit"></i>
+    </ng-template>
+    <ng-template #actionEllipsis>
+      <i class="anticon anticon-ellipsis"></i>
+    </ng-template>
+  </div>
+
+  <div nz-col [nzSpan]="6">
+    <nz-card [nzCover]="coverTemplate" [nzActions]="[actionSetting,actionEdit,actionEllipsis]">
+      <nz-card-meta nzTitle="Card title" nzDescription="This is the description"
+                    [nzAvatar]="avatarTemplate"></nz-card-meta>
+    </nz-card>
+    <ng-template #avatarTemplate>
+      <nz-avatar nzSrc="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></nz-avatar>
+    </ng-template>
+    <ng-template #coverTemplate>
+      <img alt="example" src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"/>
+    </ng-template>
+    <ng-template #actionSetting>
+      <i class="anticon anticon-setting"></i>
+    </ng-template>
+    <ng-template #actionEdit>
+      <i class="anticon anticon-edit"></i>
+    </ng-template>
+    <ng-template #actionEllipsis>
+      <i class="anticon anticon-ellipsis"></i>
+    </ng-template>
+  </div>
+
+
+  <div nz-col [nzSpan]="6">
+    <nz-card [nzCover]="coverTemplate" [nzActions]="[actionSetting,actionEdit,actionEllipsis]">
+      <nz-card-meta nzTitle="Card title" nzDescription="This is the description"
+                    [nzAvatar]="avatarTemplate"></nz-card-meta>
+    </nz-card>
+    <ng-template #avatarTemplate>
+      <nz-avatar nzSrc="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></nz-avatar>
+    </ng-template>
+    <ng-template #coverTemplate>
+      <img alt="example" src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"/>
+    </ng-template>
+    <ng-template #actionSetting>
+      <i class="anticon anticon-setting"></i>
+    </ng-template>
+    <ng-template #actionEdit>
+      <i class="anticon anticon-edit"></i>
+    </ng-template>
+    <ng-template #actionEllipsis>
+      <i class="anticon anticon-ellipsis"></i>
+    </ng-template>
+  </div>
+
+
+  <div nz-col [nzSpan]="6">
+    <nz-card [nzCover]="coverTemplate" [nzActions]="[actionSetting,actionEdit,actionEllipsis]">
+      <nz-card-meta nzTitle="Card title" nzDescription="This is the description"
+                    [nzAvatar]="avatarTemplate"></nz-card-meta>
+    </nz-card>
+    <ng-template #avatarTemplate>
+      <nz-avatar nzSrc="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></nz-avatar>
+    </ng-template>
+    <ng-template #coverTemplate>
+      <img alt="example" src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"/>
+    </ng-template>
+    <ng-template #actionSetting>
+      <i class="anticon anticon-setting"></i>
+    </ng-template>
+    <ng-template #actionEdit>
+      <i class="anticon anticon-edit"></i>
+    </ng-template>
+    <ng-template #actionEllipsis>
+      <i class="anticon anticon-ellipsis"></i>
+    </ng-template>
+  </div>
+</div>

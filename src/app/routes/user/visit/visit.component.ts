@@ -13,7 +13,7 @@ export class VisitComponent implements OnInit {
 
   constructor(public user: UserService) {
 
-    for (let i of user.urlcache) {
+    for (const i of user.urlcache) {
       this.cache.unshift(i);
     }
 

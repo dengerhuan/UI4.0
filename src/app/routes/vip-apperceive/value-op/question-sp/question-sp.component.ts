@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {BarDataSet} from "../../../../shared/chart/bar/bar.component";
 
 @Component({
   selector: 'nb-question-sp',
@@ -18,7 +17,7 @@ export class QuestionSpComponent implements OnInit {
     {item: '事例二1', count: 21},
     {item: '事例三2', count: 17},
   ];
-  data: BarDataSet[] = [
+  data= [
     {x: 'xwa', y: 275},
     {x: 'asdaw', y: 115},
     {x: 'Action', y: 120},

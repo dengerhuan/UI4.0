@@ -1,3 +1,4 @@
+<!--
 <nb-nav-head [title]="'开发爸爸你好'" [subTitle]="'写代码的会上天'" [img]="img">
 
   <ng-template #extra>
@@ -38,20 +39,20 @@
             <div nz-form-label nz-col [nzSpan]="4" *ngIf="i==0">
               <label [attr.for]="control.controlInstance">项目名称</label>
             </div>
-            <div nz-form-control nz-col [nzSpan]="18" [nzOffset]="i==0?0:4">
-              <nz-input
-                style="width: 60%; margin-right:8px;"
-                [nzSize]="'large'"
-                [nzPlaceHolder]="'项目'"
-                [formControlName]="control.controlInstance"
-                [nzId]="control.id">
+      &lt;!&ndash;      <div nz-form-control nz-col [nzSpan]="18" [nzOffset]="i==0?0:4">
+              <input nz-input
+                     style="width: 60%; margin-right:8px;"
+                     [nzSize]="'large'"
+                     placeholder="'项目'"
+                     [formControlName]="control.controlInstance"
+                     [nzId]="control.id">
               </nz-input>
               <i class="anticon anticon-minus-circle-o dynamic-delete-button" (click)="removeField(control,$event)"></i>
               <div nz-form-explain
                    *ngIf="getFormControl(control.controlInstance)?.dirty&&getFormControl(control.controlInstance)?.hasError('required')">
                 Please input passenger's name or delete this field.
               </div>
-            </div>
+            </div>&ndash;&gt;
           </div>
 
           <div nz-form-item nz-row>
@@ -96,3 +97,4 @@
 </nz-card>
 
 111{{cache.getItem('GEO')}}
+-->

@@ -11,6 +11,7 @@ import {
 } from './value-op/';
 import {FullNetworkOverviewComponent} from './full-network-overview/full-network-overview.component';
 import {GroupAComponent} from './group-user/group-a/group-a.component';
+import {DataschemaComponent} from './dataschema/dataschema.component';
 
 
 const components = [
@@ -19,7 +20,8 @@ const components = [
   QuestionTerminalComponent,
   AreaValueSearchComponent,
   FullNetworkOverviewComponent,
-  GroupAComponent
+  GroupAComponent,
+  DataschemaComponent
 ];
 const routes: Routes = [
   {path: 'full', component: FullNetworkOverviewComponent},
@@ -27,7 +29,8 @@ const routes: Routes = [
   {path: 'area-value', component: AreaValueSearchComponent},
   {path: 'ques-area', component: QuestionAreaComponent},
   {path: 'ques-sp', component: QuestionSpComponent},
-  {path: 'ques-terminal', component: QuestionTerminalComponent}
+  {path: 'ques-terminal', component: QuestionTerminalComponent},
+  {path: 'data-structure', component: DataschemaComponent}
 ];
 
 

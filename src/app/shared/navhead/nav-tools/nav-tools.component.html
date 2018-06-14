@@ -1,9 +1,19 @@
 <nz-card>
-  <ng-template #body>
-    <nz-datepicker style="width:120px" [nzSize]="'large'" [nzFormat]="'YYYY-MM-DD'"
-                   [nzPlaceHolder]="'开始日期'"></nz-datepicker>
-    <nz-datepicker style="width:120px" [nzSize]="'large'" [nzFormat]="'YYYY-MM-DD'"
-                   [nzPlaceHolder]="'结束日期'"></nz-datepicker>
-    <button nz-button [nzSize]="'large'" [nzType]="'primary'">查询</button>
-  </ng-template>
+
+  <ng-container *ngIf="type==='day'">
+    <nz-date-picker [nzSize]="size" [(ngModel)]="day"></nz-date-picker>
+  </ng-container>
+
+  <ng-container *ngIf="type==='range'">
+    <nz-range-picker [nzSize]="size" [(ngModel)]="range"></nz-range-picker>
+  </ng-container>
+
+  <ng-container *ngIf="type==='week'">
+    <nz-week-picker [nzSize]="size" [(ngModel)]="week" nzPlaceHolder="Select Week"></nz-week-picker>
+  </ng-container>
+
+  <ng-content></ng-content>
+
+
+  <button nz-button [nzType]="'primary'" (click)="submit()">查询</button>
 </nz-card>

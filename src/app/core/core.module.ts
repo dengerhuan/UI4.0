@@ -7,6 +7,7 @@ import {WebCacheService} from './services/web-cache.service';
 import {UserService} from './services/user.service';
 import {ThemeService} from './services/theme.service';
 import {TemCacheService} from './services/tem-cache.service';
+import {SharedModule} from '../shared/shared.module';
 
 
 const ServiceArray = [
@@ -16,7 +17,8 @@ const ServiceArray = [
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule
   ],
   declarations: [],
   providers: [...ServiceArray],

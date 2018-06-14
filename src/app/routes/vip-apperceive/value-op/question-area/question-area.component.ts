@@ -1,69 +1,145 @@
-import {Component, OnInit} from '@angular/core';
-import {BarDataSet} from "../../../../shared/chart/bar/bar.component";
+import {Component, OnInit, AfterViewInit} from '@angular/core';
+import {Http} from '../../../../core/services/http.client';
+import {NzMessageService} from 'ng-zorro-antd';
+import {ArrayExtend} from '../../../../utils/arrayextend';
+
+import 'rxjs/add/operator/mergeMap';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'nb-question-area',
   templateUrl: './question-area.component.html',
   styleUrls: ['./question-area.component.less']
 })
-export class QuestionAreaComponent implements OnInit {
+export class QuestionAreaComponent implements OnInit, AfterViewInit {
 
-  piedata = [
-    {item: '事例一', count: 40},
-    {item: '事例二', count: 21},
-    {item: '事例三', count: 17},
-    {item: '事例四', count: 13},
-    {item: '事例五', count: 9},
-    {item: '事例一', count: 40},
-    {item: '事例二1', count: 21},
-    {item: '事例三2', count: 17},
+
+  default_dimension = 'range';
+  // 保存全局消息  时间
+  msg: any;
+
+  //  时间维度
+  _time_dimension = this.default_dimension;
+  //  导航栏的格式
+  type: string = this.default_dimension;
+
+  // -----
+
+  hvolte;
+  hhttp;
+
+  volte_rank = [];
+  http_rank = [];
+
+  table_data = [];
+
+
+  table_metadata = [
+    {column: 'HTTP_QOE', key: 'HTTP用户感知评分'},
+    {column: 'VOLTE_QOE', key: 'VOLTE用户感知评分'},
+    {column: 'HTTP_SUCC_RATE', key: 'HTTP成功率'},
+    {column: 'HTTP_BIG_TPUT', key: 'HTTP大包平均速率'},
+    {column: 'CALL_SETUP_FR', key: 'VOLTE主叫失败率'},
+    {column: 'VOLTE_DROP_RATE', key: 'VOLTE掉话率'},
+    {column: 'ERAB_SETUP_SR', key: 'ERAB建立成功率'},
+    {column: 'USR_DROP_RATE', key: '用户掉线率'},
+    {column: 'RTCP_UL_LOSS_RATE', key: '上行RTCP丢包率'},
+    {column: 'RTCP_DL_LOSS_RATE', key: '下行RTCP丢包率'},
+    {column: 'DL_AVG_MOS', key: '下行平均MOS值'}
   ];
-  data: BarDataSet[] = [
-    {x: 'xwa', y: 275},
-    {x: 'asdaw', y: 115},
-    {x: 'Action', y: 120},
-    {x: 'Shooter', y: 350},
-    {x: 'ss', y: 150},
-    {x: '1dsa', y: 275},
-    {x: 'Strategy', y: 115},
-    {x: '1', y: 120},
-    {x: 'Shooter', y: 350},
-    {x: 'Other', y: 150},
-    {x: '112', y: 275},
-    {x: 'saw', y: 115},
-    {x: '123', y: 120},
-    {x: '12312424', y: 350},
-    {x: '2c', y: 150}
-  ];
 
+  constructor(private message: NzMessageService, private http: Http) {
+    this.msg = {begin: '2018-05-02'};
 
-  tdata = [['65CCE02', 130, 1.3, 1.5, 0.0, 0.7, 5.0, 5.0, 3.8],
-    ['B3E9E02', 135, 1.5, 1.0, 0.0, 1.7, 5.0, 5.0, 3.9],
-    ['96C9581', 139, 1.8, 0.6, 2.6, 0.4, 5.0, 5.0, 0.6],
-    ['96A2A81', 178, 1.8, 1.0, 0.0, 2.6, 5.0, 5.0, 1.2],
-    ['B96CA03', 156, 2.5, 0.0, 4.8, 1.0, 5.0, 5.0, 2.5],
-    ['65A0701', 174, 2.5, 0.9, 4.9, 3.5, 1.4, 5.0, 0.4],
-    ['B98A102', 112, 2.5, 0.9, 4.2, 0.4, 5.0, 5.0, 3.2],
-    ['65A5601', 112, 2.6, 3.8, 5.0, 2.3, 5.0, 0.0, 0.0],
-    ['BC1B103', 101, 2.6, 0.6, 4.9, 0.3, 5.0, 5.0, 4.1],
-    ['65B0303', 321, 2.6, 4.6, 4.5, 5.0, 0.0, 5.0, 1.0],
-    ['969D383', 102, 2.6, 2.7, 1.2, 1.4, 5.0, 5.0, 3.6],
-    ['96A5281', 120, 2.7, 2.5, 0.0, 2.8, 5.0, 5.0, 4.1],
-    ['B6EF003', 238, 2.7, 0.7, 4.5, 0.8, 5.0, 5.0, 4.0],
-    ['9680482', 147, 2.7, 1.0, 0.0, 5.0, 5.0, 5.0, 3.8],
-    ['65A4C02', 193, 2.7, 3.1, 0.0, 2.3, 5.0, 5.0, 3.7],
-    ['65B8101', 104, 2.7, 1.7, 4.7, 2.9, 0.0, 5.0, 3.5],
-    ['B99A702', 105, 2.7, 0.9, 4.1, 1.2, 5.0, 5.0, 3.5],
-    ['96CD282', 263, 2.7, 2.9, 4.6, 1.0, 0.0, 5.0, 3.9],
-    ['65BB902', 192, 2.8, 0.7, 4.4, 1.3, 5.0, 5.0, 3.8],
-    ['BC02B02', 140, 2.8, 0.8, 4.9, 0.7, 5.0, 5.0, 3.7],
-    ['65A7603', 268, 2.8, 0.9, 5.0, 3.3, 0.0, 5.0, 4.1]];
+  }
 
-
-  constructor() {
+  ngAfterViewInit(): void {
+    this.refresh();
   }
 
   ngOnInit() {
   }
 
+  search(e) {
+    if (!this.validate()) {
+      return;
+    }
+    this.msg = e;
+    this.refresh();
+  }
+
+
+  refresh() {
+    this.refreshFullData();
+    this.refreshRank();
+  }
+
+
+  refreshFullData() {
+    this.http.get('vip/cell/kpi', Object.assign(this.msg,
+      {columns: this.table_metadata.map(i => i.column).join(',')}))
+      .subscribe(data => {
+        this.table_data = data.slice(1, 100);
+      });
+  }
+
+  refreshRank() {
+    this.http.get('vip/cell/kpi/top', Object.assign(this.msg,
+      {columns: 'HTTP_QOE'}))
+      .subscribe(data => {
+        this.http_rank = data;
+        this.refreshHttpBar(0);
+      });
+    this.http.get('vip/cell/kpi/top', Object.assign(this.msg,
+      {columns: 'VOLTE_QOE'}))
+      .subscribe(data => {
+        this.volte_rank = data;
+        this.refreshVolteBar(0);
+      });
+  }
+
+  getBarData(kpi: string, cells: Array<string>, index): Observable<any> {
+    if (cells.length < 1) {
+      this.message.info('没有数据', {nzDuration: 500});
+      return;
+    }
+    return this.http.get(`vip/cell/kpi/${cells[index]['title']}`, Object.assign(this.msg,
+      {columns: kpi}));
+  }
+
+  transform(att) {
+    const res = {'bar': [], 'line': []};
+
+    att.forEach(item => {
+      res['bar'].push({x: item[0].substr(-5), y: item[1]});
+      res['line'].push({x: item[0].substr(-5), y: item[2]});
+    });
+    return res;
+  }
+
+  refreshHttpBar(id) {
+    this.getBarData('HTTP_QOE', this.http_rank, id).subscribe(data => {
+        this.hhttp = this.transform(data);
+      }
+    );
+  }
+
+  refreshVolteBar(id) {
+    this.getBarData('VOLTE_QOE', this.volte_rank, id).subscribe(data => {
+        this.hvolte = this.transform(data);
+      }
+    );
+  }
+
+  conditionRefresh(e) {
+    this.type = e;
+  }
+
+  validate() {
+    if (!this._time_dimension) {
+      this.message.info('Please select time dimension', {nzDuration: 500});
+      return false;
+    }
+    return true;
+  }
 }

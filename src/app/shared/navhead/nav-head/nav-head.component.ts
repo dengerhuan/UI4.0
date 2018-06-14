@@ -1,6 +1,8 @@
 import {Component, ContentChild, Input, OnInit, TemplateRef} from '@angular/core';
 import {Router} from '@angular/router';
 
+
+
 @Component({
   selector: 'nb-nav-head',
   templateUrl: './nav-head.component.html',
@@ -20,11 +22,12 @@ export class NavHeadComponent implements OnInit {
 
 
   constructor(private router: Router) {
-    this.position.push('home')
-
+    this.position.push('home');
     this.position = router.url.split('/');
     this.position[0] = 'home';
     console.log(this.position);
+
+
   }
 
   ngOnInit() {

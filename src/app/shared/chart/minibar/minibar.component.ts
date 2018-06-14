@@ -2,7 +2,7 @@ import {
   AfterViewInit, Component, ElementRef, HostBinding, Input, OnChanges, OnDestroy, OnInit, SimpleChanges,
   ViewChild
 } from '@angular/core';
-import {BarDataSet} from '../bar/bar.component';
+import {BarDataSet} from '../index';
 
 @Component({
   selector: 'nb-minibar',

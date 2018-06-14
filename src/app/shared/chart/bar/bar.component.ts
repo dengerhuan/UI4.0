@@ -8,11 +8,8 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/operator/debounceTime';
 import {SettingService} from '../../../core/services/setting.service';
+import {BarDataSet} from '../index';
 
-export interface BarDataSet {
-  x: string;
-  y: number;
-}
 
 @Component({
   selector: 'nb-bar',

@@ -1,4 +1,14 @@
-import {Component, OnInit, Input, AfterViewInit, SimpleChanges, OnChanges, TemplateRef} from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  AfterViewInit,
+  SimpleChanges,
+  OnChanges,
+  TemplateRef,
+  EventEmitter
+} from '@angular/core';
 
 
 @Component({
@@ -23,6 +33,9 @@ export class RankListComponent implements OnInit, AfterViewInit, OnChanges {
 
   @Input() pageSize = 6;
 
+
+  @Output() nbChange = new EventEmitter();
+
   _colorArray = ['#f54545', '#ff8547', '#ffac38'];
   _current = 1;
   _data = [];
@@ -35,21 +48,30 @@ export class RankListComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
 
-  changeData() {
-    this._data = this.data.slice((this._current - 1) * this.pageSize, this._current * this.pageSize);
+  set current(num) {
+    this._data = this.data.slice((num - 1) * this.pageSize, num * this.pageSize);
+    this._current = num;
+  }
+
+  get current() {
+    return this._current;
   }
 
   ngAfterViewInit(): void {
-
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.hasOwnProperty('data') && !changes.data.firstChange) {
-      this.changeData();
+      // this.current = this._current;
+      this.current = 1;
     }
   }
 
+  sub(index) {
+    this.nbChange.emit(this.calculateIndex(index));
+  }
+
   calculateIndex(index) {
-    return index + (this._current - 1) * this.pageSize;
+    return index + (this.current - 1) * this.pageSize;
   }
 }

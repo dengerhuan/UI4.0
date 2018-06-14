@@ -34,24 +34,25 @@
   <ng-template #body>
     <form nz-form [formGroup]="validateForm" (ngSubmit)="_onsubmit(validateForm)">
       <nb-tag-box [title]="'项目选择'" [expand]="true" (toggle)="projectExpanede=$event">
-        <nz-checkable-tag *ngFor="let tag of hotTags ;index as i" [style.display]=" projectExpanede&&i>7?'none':''">
+        <nz-tag nzMode="checkable" *ngFor="let tag of hotTags ;index as i"
+                [style.display]=" projectExpanede&&i>7?'none':''">
           {{ tag.text }}
-        </nz-checkable-tag>
+        </nz-tag>
       </nb-tag-box>
 
 
       <nb-tag-box [title]="'时间'">
 
-        <nz-datepicker formControlName="date" [nzPlaceHolder]="'Select date'"></nz-datepicker>
-        -
-        <nz-datepicker formControlName="date" [nzPlaceHolder]="'Select date'"></nz-datepicker>
 
+        <nz-date-picker formControlName="date"></nz-date-picker>
+        -
+        <nz-date-picker formControlName="date"></nz-date-picker>
 
       </nb-tag-box>
 
       <nb-tag-box [title]="'关键字'">
 
-        <nz-input style="width: 200px;" [nzPlaceHolder]="'输入关键字'"></nz-input>
+        <input nz-input style="width: 200px;" placeholder="'输入关键字'"/>
 
       </nb-tag-box>
 

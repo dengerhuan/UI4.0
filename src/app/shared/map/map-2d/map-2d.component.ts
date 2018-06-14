@@ -94,8 +94,10 @@ export class Map2dComponent implements OnInit, AfterViewInit, OnChanges, OnDestr
     */
 
 
+/*
     this._customer = new Customer(this.http, op, this.cache);
     this._customer.addTo(this.map);
+*/
 
 
     /*    this.http.get('/api/vectormap/109347/53996/17').catch(res => res).subscribe(ss => {
@@ -167,7 +169,7 @@ export class Map2dComponent implements OnInit, AfterViewInit, OnChanges, OnDestr
 
 
   ngOnDestroy(): void {
-    this._customer.destory();
+    // this._customer.destory();
     this.node.nativeElement.innerHTML = '';
   }
 

@@ -2,7 +2,6 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/do';
-import * as moment from 'moment';
 import {environment} from '../../../environments/environment';
 
 /**
@@ -30,9 +29,6 @@ export class Http {
       for (const key in params) {
         let _data = params[key];
         // 将时间转化为：时间戳 (秒)
-        if (moment.isDate(_data)) {
-          _data = moment(_data).unix();
-        }
         ret = ret.set(key, _data);
       }
     }

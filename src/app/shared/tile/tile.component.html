@@ -1,8 +1,6 @@
 <nz-card>
-  <ng-template #body>
-    <div class="text-right text-grey"><i class="{{icon}} fa-2x"></i></div>
-    <h3 class="h3">99.999</h3>
-    <p class="text-grey">Games played last month</p>
-    <nb-mini-progress></nb-mini-progress>
-  </ng-template>
+  <div class="text-right text-grey"><i class="fa {{icon}} fa-2x"></i></div>
+  <h3 class="h3">{{value|number:'2.2-4'}}</h3>
+  <p class="text-grey">{{key }}</p>
+  <!--<nb-mini-progress></nb-mini-progress>-->
 </nz-card>

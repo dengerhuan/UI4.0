@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {BarDataSet} from "../../../../shared/chart/bar/bar.component";
+import {Component, OnInit} from '@angular/core';
+import {Http} from '../../../../core/services/http.client';
+import {NzMessageService} from 'ng-zorro-antd';
 
 @Component({
   selector: 'nb-area-value-search',
@@ -7,6 +8,16 @@ import {BarDataSet} from "../../../../shared/chart/bar/bar.component";
   styleUrls: ['./area-value-search.component.less']
 })
 export class AreaValueSearchComponent implements OnInit {
+
+  default_dimension = 'range';
+  // 保存全局消息  时间
+  msg: any;
+
+  //  时间维度
+  _time_dimension = this.default_dimension;
+  //  导航栏的格式
+  type: string = this.default_dimension;
+
 
   piedata = [
     {item: '事例一', count: 40},
@@ -18,7 +29,7 @@ export class AreaValueSearchComponent implements OnInit {
     {item: '事例二1', count: 21},
     {item: '事例三2', count: 17},
   ];
-  data: BarDataSet[] = [
+  data = [
     {x: 'xwa', y: 275},
     {x: 'asdaw', y: 115},
     {x: 'Action', y: 120},
@@ -35,9 +46,24 @@ export class AreaValueSearchComponent implements OnInit {
     {x: '12312424', y: 350},
     {x: '2c', y: 150}
   ]
-  constructor() { }
+
+  constructor(private message: NzMessageService, private http: Http) {
+
+  }
 
   ngOnInit() {
   }
 
+
+  conditionRefresh(e) {
+    this.type = e;
+  }
+
+  validate() {
+    if (!this._time_dimension) {
+      this.message.info('Please select time dimension', {nzDuration: 500});
+      return false;
+    }
+    return true;
+  }
 }

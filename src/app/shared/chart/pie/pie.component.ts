@@ -9,6 +9,7 @@ import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/operator/debounceTime';
 import {SettingService} from '../../../core/services/setting.service';
 import index from "@angular/cli/lib/cli";
+import {BarDataSet} from "../index";
 
 
 @Component({
@@ -28,7 +29,7 @@ export class PieComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy
 
   @Input() innerText = true;
 
-  @Input() data: any[];
+  @Input() data: BarDataSet[] = [];
 
   @Input()
   set title(value: string | TemplateRef<any>) {
@@ -59,10 +60,10 @@ export class PieComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy
   makeChart() {
 
     const labelConfig = {
-      formatter: (val, item) => {
-        return this.innerText ? val : item.point.item + ': ' + val;
+      formatter: (val, item, ...f) => {
+        return this.innerText ? parseFloat(val).toFixed(2) : item.point.item + ': ' + val.toFixed(2);
       }
-    }
+    };
 
     if (this.innerText) {
       Object.assign(labelConfig, {
@@ -97,11 +98,13 @@ export class PieComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy
       }
     });
     this.chart.intervalStack()
-      .position('count')
-      .color('item')
-      .label('count', labelConfig);
+      .position('y')
+      .color('x')
+      .label('y', labelConfig);
     this.chart.render();
   }
+
+  /*this.chart.interval().position('x*y').color('x')*/
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.hasOwnProperty('data') && !changes.data.firstChange) {

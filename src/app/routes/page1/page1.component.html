@@ -1,5 +1,4 @@
-<nz-card>
-  <ng-template #title> 工单进展</ng-template>
+<nz-card nzTitle="工单进展">
 
   <ng-template #extra>
     <div>
@@ -13,7 +12,7 @@
     </div>
   </ng-template>
 
-  <ng-template #body>
+
     <nz-steps [(nzCurrent)]="current">
       <nz-step [nzTitle]="'下发工单'" [nzDescription]="'This is a description.'"></nz-step>
       <nz-step [nzTitle]="'正在处理'" [nzDescription]="nzDescription">
@@ -25,13 +24,13 @@
       </nz-step>
       <nz-step [nzTitle]="'完成'" [nzDescription]="'This is a description.'"></nz-step>
     </nz-steps>
-  </ng-template>
+
 </nz-card>
 
 
 <nz-card>
   <ng-template #title> 当前工单明细</ng-template>
-  <ng-template #body>
+
     <nz-timeline>
       <nz-timeline-item>创建工单</nz-timeline-item>
       <nz-timeline-item>工单以接受，处理人员：张三</nz-timeline-item>
@@ -41,15 +40,15 @@
         <a>待归档</a>
       </ng-template>
     </nz-timeline>
-  </ng-template>
+
 </nz-card>
 
 
 <nz-card>
 
   <ng-template #title> 工单员联系方式</ng-template>
-  <ng-template #body>
 
+<!--
     <nz-table #nzTable [nzDataSource]="tdata" [nzPageSize]="10">
       <thead nz-thead>
       <tr>
@@ -95,12 +94,12 @@
       </tbody>
     </nz-table>
 
-  </ng-template>
+ -->
 </nz-card>
 
 
 <nz-card>
-  <ng-template #body>
+
 
 
     <div nz-row [nzGutter]="16">
@@ -113,17 +112,17 @@
         <nb-line [height]="300" [data]="piedatas" [title]="'用户数'"></nb-line>
       </div>
     </div>
-  </ng-template>
+
 </nz-card>
 
 
-<nz-card>
+<!--<nz-card>
   <ng-template #body>
     <nz-rangepicker [(ngModel)]="_dateRange"
                     [nzPlaceholder]="['Select start date', 'Select end date']"></nz-rangepicker>
 
   </ng-template>
-</nz-card>
+</nz-card>-->
 
 
 <nz-card [nzLoading]="loading" [nzBordered]="false">
@@ -142,7 +141,7 @@
     </div>
   </ng-template>
 
-  <ng-template #body>
+
 
     <!--  <nz-radio-group class="marginB-sm" [nzSize]="'large'">
         <label nz-radio-button [nzValue]="'all'"><span>区域</span></label>
@@ -168,7 +167,7 @@
       </div>
     </div>
 
-  </ng-template>
+
 </nz-card>
 
 

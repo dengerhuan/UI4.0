@@ -1,7 +1,7 @@
 <div class="rank_list">
   <ng-container *ngIf="_title; else _titleTpl"><h4>{{_title}}</h4></ng-container>
   <ul>
-    <li *ngFor="let i of _data; let idx = index">
+    <li *ngFor="let i of _data; let idx = index" (click)="sub(idx)">
       <div>
       <span class="icon"
             [ngStyle]="{'background-color': _colorArray[calculateIndex(idx)]}">{{calculateIndex(idx)+1}}</span>
@@ -12,9 +12,8 @@
   </ul>
   <nz-pagination
     [nzTotal]="data.length"
-    (nzPageIndexChange)="changeData()"
     [nzPageSize]="pageSize"
-    [(nzPageIndex)]="_current"
+    [(nzPageIndex)]="current"
     [nzSize]="'small'">
   </nz-pagination>
 </div>

@@ -3,112 +3,13 @@ import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
-
-
-import {
-  // LoggerModule,
-  // NzLocaleModule,
-  NzButtonModule,
-  NzAlertModule,
-  NzBadgeModule,
-  NzCalendarModule,
-  NzCascaderModule,
-  NzCheckboxModule,
-  NzDatePickerModule,
-  NzFormModule,
-  NzInputModule,
-  NzInputNumberModule,
-  NzGridModule,
-  NzMessageModule,
-  NzModalModule,
-  NzNotificationModule,
-  NzPaginationModule,
-  NzPopconfirmModule,
-  NzPopoverModule,
-  NzRadioModule,
-  NzRateModule,
-  NzSelectModule,
-  NzSpinModule,
-  NzSliderModule,
-  NzSwitchModule,
-  NzProgressModule,
-  NzTableModule,
-  NzTabsModule,
-  NzTagModule,
-  NzTimePickerModule,
-  NzUtilModule,
-  NzStepsModule,
-  NzDropDownModule,
-  NzMenuModule,
-  NzBreadCrumbModule,
-  NzLayoutModule,
-  NzRootModule,
-  NzCarouselModule,
-  NzCardModule,
-  NzCollapseModule,
-  NzTimelineModule,
-  NzToolTipModule,
-  NzBackTopModule,
-  NzAffixModule,
-  NzAnchorModule,
-  NzAvatarModule,
-  NzNotificationService,
-  NzMessageService
-} from 'ng-zorro-antd';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {shared_components} from './index';
 import {CardNoPaddingDirective} from './directive/card-no-padding.directive';
 
-
-const ZORROMODULES = [
-  // LoggerModule,
-  // NzLocaleModule,
-  NzButtonModule,
-  NzAlertModule,
-  NzBadgeModule,
-  NzCalendarModule,
-  NzCascaderModule,
-  NzCheckboxModule,
-  NzDatePickerModule,
-  NzFormModule,
-  NzInputModule,
-  NzInputNumberModule,
-  NzGridModule,
-  NzMessageModule,
-  NzModalModule,
-  NzNotificationModule,
-  NzPaginationModule,
-  NzPopconfirmModule,
-  NzPopoverModule,
-  NzRadioModule,
-  NzRateModule,
-  NzSelectModule,
-  NzSpinModule,
-  NzSliderModule,
-  NzSwitchModule,
-  NzProgressModule,
-  NzTableModule,
-  NzTabsModule,
-  NzTagModule,
-  NzTimePickerModule,
-  NzUtilModule,
-  NzStepsModule,
-  NzDropDownModule,
-  NzMenuModule,
-  NzBreadCrumbModule,
-  NzLayoutModule,
-  NzRootModule,
-  NzCarouselModule,
-  NzCardModule,
-  NzCollapseModule,
-  NzTimelineModule,
-  NzToolTipModule,
-  NzBackTopModule,
-  NzAffixModule,
-  NzAnchorModule,
-  NzAvatarModule
-];
+import {NgZorroAntdModule} from 'ng-zorro-antd';
+import {LightDirective} from './directive/light.directive';
 
 const sharedModule = [];
 
@@ -118,13 +19,14 @@ const sharedModule = [];
     RouterModule,
     HttpClientModule,
     FormsModule,
-    ...ZORROMODULES,
+    NgZorroAntdModule.forRoot(),
     ...sharedModule,
     ReactiveFormsModule
   ],
-  declarations: [...shared_components, CardNoPaddingDirective],
-  exports: [...ZORROMODULES, RouterModule, FormsModule, ...sharedModule, CardNoPaddingDirective, ReactiveFormsModule, ...shared_components],
-  entryComponents: [...shared_components]
+  declarations: [...shared_components, CardNoPaddingDirective, LightDirective],
+  exports: [NgZorroAntdModule, RouterModule, FormsModule, ...sharedModule,
+    CardNoPaddingDirective, ReactiveFormsModule, ...shared_components, LightDirective],
+  entryComponents: []
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders {
@@ -132,8 +34,6 @@ export class SharedModule {
       ngModule: SharedModule,
       providers: [
         // Services
-        NzNotificationService,
-        NzMessageService
       ]
     };
   }

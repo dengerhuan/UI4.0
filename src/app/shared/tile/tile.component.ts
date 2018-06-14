@@ -6,20 +6,21 @@ import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./tile.component.less']
 })
 export class TileComponent implements OnInit, AfterViewInit {
-  ngAfterViewInit(): void {
-  }
 
-  @Input() icon = 'fa fa-gamepad';
+  @Input() icon = 'fa-gamepad';
 
-  @Input() title;
+  @Input() key;
 
-  @Input() process;
+  @Input() value;
 
   constructor() {
 
   }
 
   ngOnInit() {
+  }
+
+  ngAfterViewInit(): void {
   }
 
 }

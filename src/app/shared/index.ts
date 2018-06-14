@@ -1,6 +1,6 @@
 import {
   MiniProgressComponent, MinibarComponent, MiniareaComponent, BarComponent, PieComponent,
-  LineComponent
+  LineComponent, LineBarComponent
 } from './chart';
 import {RankListComponent} from './list';
 import {CardComponent} from './card/card.component';
@@ -16,6 +16,7 @@ export const shared_components = [
   TileComponent,
   MiniareaComponent,
   BarComponent,
+  LineBarComponent,
   NavToolsComponent,
   RankListComponent,
   PieComponent,

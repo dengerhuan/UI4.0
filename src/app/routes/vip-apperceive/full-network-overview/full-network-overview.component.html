@@ -1,58 +1,118 @@
-<nb-nav-tools class="content-title"></nb-nav-tools>
+<nb-nav-tools class="content-title" [type]="type" (nbChange)="search($event)">
+  <nz-select style="width: 120px;"
+             [(ngModel)]="_time_dimension" (ngModelChange)="conditionRefresh($event)"
+             nzAllowClear
+             nzPlaceHolder="时间维度">
+    <nz-option nzValue="day" nzLabel="小时"></nz-option>
+    <nz-option nzValue="range" nzLabel="天"></nz-option>
+    <nz-option nzValue="week" nzLabel="周"></nz-option>
+  </nz-select>
 
+</nb-nav-tools>
+
+<!--关键指标-->
+
+<div nz-row [nzGutter]="16">
+
+  <ng-container *ngFor="let tile of keyKpiIndex;index as i">
+    <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
+      <nb-tile [key]="tile.key" [icon]="tile.icon" [value]="keyKpiCount[i]"></nb-tile>
+    </div>
+  </ng-container>
+</div>
+
+
+<div nz-row [nzGutter]="8">
+
+  <ng-container *ngFor="let tile of keyKpiIndex;index as i">
+    <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12">
+      <nz-card>
+        <nb-bar [height]="200" [data]="keyKpiBarData[i]" [title]="tile.key"></nb-bar>
+      </nz-card>
+    </div>
+  </ng-container>
+
+</div>
 
 <nz-card>
-  <ng-template #body>
+  <nz-tabset [nzTabBarExtraContent]="extraTemplate">
+    <nz-tab [nzTitle]="'感知分析'">
 
-    <div nz-row [nzGutter]="16">
+      <div nz-row [nzGutter]="16">
 
-      <!--left-->
-      <div nz-col [nzXs]="24" [nzSm]="8" [nzMd]="8" [nzLg]="8">
-        <div nz-row [nzGutter]="8">
-          <nb-line [height]="200" [data]="piedata" [title]="'HTTP用户感知'"></nb-line>
+        <div nz-col [nzSpan]="24">
+          <nz-select style="width: 100%" [nzMaxMultipleCount]="9" [(ngModel)]="dyn_app_select" [nzSize]="size"
+                     nzMode="tags"
+                     (ngModelChange)="refreshApperceive($event)"
+                     nzPlaceHolder="Please select">
+            <nz-option *ngFor="let option of metadata" [nzLabel]="option"
+                       [nzValue]="option"></nz-option>
+          </nz-select>
         </div>
 
-        <div nz-row [nzGutter]="8">
-          <nb-line [height]="200" [data]="piedata" [title]="'VoLTE用户感知'"></nb-line>
+        <div nz-col [nzSpan]="24">
+          <ng-container *ngFor="let item of dyn_app">
+            <div nz-col nzXs="24" nzSm="8" nzMd="8" nzLg="8">
+              <nb-bar [height]="300" [data]="item.data" [title]="item.title"></nb-bar>
+            </div>
+          </ng-container>
+        </div>
+
+
+      </div>
+
+    </nz-tab>
+    <nz-tab [nzTitle]="'地理用户分布' ">
+
+      <div nz-row [nzGutter]="16">
+
+        <div nz-col nzXs="24" nzSm="16" nzMd="16" nzLg="16">
+          <nb-bar [height]="300" title="区县用户数分布" [data]="area"></nb-bar>
+        </div>
+        <div nz-col nzXs="24" nzSm="8" nzMd="8" nzLg="8">
+          <nb-rank-list [pageSize]="6" title="综合排名" [data]="area_rank"></nb-rank-list>
         </div>
 
       </div>
+    </nz-tab>
 
-      <!--for map-->
+    <nz-tab [nzTitle]="'终端用户分布' ">
 
-      <div nz-col [nzXs]="24" [nzSm]="8" [nzMd]="8" [nzLg]="8">
-        <nb-map-2d [height]="400"></nb-map-2d>
-      </div>
+      <div nz-row [nzGutter]="16">
 
-
-      <!--for rght-->
-      <div nz-col [nzXs]="24" [nzSm]="8" [nzMd]="8" [nzLg]="8">
-
-
-        <nb-line [height]="200" [data]="piedata" [title]="'流量趋势'"></nb-line>
-
-
-        <nb-line [height]="200" [data]="piedata" [title]="'活跃用户数'"></nb-line>
-
+        <div nz-col nzXs="24" nzSm="16" nzMd="16" nzLg="16">
+          <nb-bar [height]="300" title="终端用户分布" [data]="tac"></nb-bar>
+        </div>
+        <div nz-col nzXs="24" nzSm="8" nzMd="8" nzLg="8">
+          <nb-rank-list [pageSize]="6" title="综合排名" [data]="tac_rank"></nb-rank-list>
+        </div>
 
       </div>
+    </nz-tab>
 
-    </div>
-
-  </ng-template>
+  </nz-tabset>
 </nz-card>
 
 
-<nz-card >
-  <ng-template #body>
-    <div nz-row [nzGutter]="8">
-      <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12">
+<nz-card style="width: 100%;" nzTitle="全量数据" [nzExtra]="extraTemplate" nbCardNoPadding>
 
-        <nb-bar [height]="200" [data]="data" [title]="'高用户小区'"></nb-bar>
-      </div>
-      <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12">
-        <nb-bar [height]="200" [data]="data" [title]="'终端用户'"></nb-bar>
-      </div>
-    </div>
-  </ng-template>
+  <nz-table #nzTable [nzData]="dataSet" [nzPageSize]="10" [nzScroll]="{ x:'10000px' }">
+    <thead>
+    <tr>
+      <th nzWidth="100px" *ngFor="let column of metadata">{{column}}</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr *ngFor="let row of nzTable.data">
+      <td *ngFor="let col of row">{{col }}</td>
+
+    </tr>
+    </tbody>
+  </nz-table>
 </nz-card>
+
+
+<ng-template #extraTemplate>
+  <button nz-button (click)="exportfile()" [nzSize]="size"><i class="fa fa-download"></i>导出</button>
+</ng-template>

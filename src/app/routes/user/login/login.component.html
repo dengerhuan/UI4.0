@@ -8,33 +8,39 @@
       </a>
     </ng-template>
 
-    <ng-template #body>
+
 
 
       <form nz-form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
         <div nz-form-item>
           <div nz-form-control>
-            <nz-input>
-              <ng-template #prefix>
-                <i class="fa fa-user-o"></i>
-              </ng-template>
-            </nz-input>
+
+
+            <nz-input-group nzSearch [nzPrefix]="prefixa">
+              <input type="text" nz-input placeholder="input search text"/>
+            </nz-input-group>
           </div>
         </div>
+        <ng-template #prefixa>
+          <i class="fa fa-user-o"></i>
+        </ng-template>
 
         <div nz-form-item>
           <div nz-form-control>
-            <nz-input formControlName="username">
-              <ng-template #prefix>
-                <i class="fa fa-key"></i>
-              </ng-template>
-            </nz-input>
+            <nz-input-group nzSearch [nzPrefix]="prefix">
+              <input type="text" nz-input placeholder="input search text"/>
+            </nz-input-group>
+
           </div>
         </div>
 
+        <ng-template #prefix>
+          <i class="fa fa-key"></i>
+        </ng-template>
+
         <button class="sub" nz-button type="submit" [nzType]="'primary'" [nzSize]="'large'">login</button>
       </form>
-    </ng-template>
+
   </nz-card>
 
 </div>

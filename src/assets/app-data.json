@@ -121,6 +121,12 @@
               "link": "/bus/vip/group/a"
             }
           ]
+        },
+        {
+          "text": "数据结构",
+          "translate": "data-structure",
+          "icon": "icon-graph",
+          "link": "/bus/vip/data-structure"
         }
       ]
     },

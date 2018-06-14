@@ -1,0 +1,79 @@
+<nb-nav-head [title]="'数据结构'" [subTitle]="'指标体系目录'" [img]="img">
+
+</nb-nav-head>
+
+
+<div nz-row [nzGutter]="16">
+
+  <div nz-col [nzSpan]="6">
+    <nz-card nbCardNoPadding nzTitle="数据库" [nzLoading]="loaddata"
+             [nzActions]="[actionSetting,actionEdit,actionEllipsis]"
+             [ngStyle]="{'min-width':'200px'}" [nzExtra]="export">
+      <ng-template #export>
+        <button nz-button (click)="exportfile()" [nzSize]="size"><i class="fa fa-download"></i>导出</button>
+      </ng-template>
+
+      <nz-list [nzDataSource]="schema"
+               [nzRenderItem]="item">
+        <ng-template #item let-item>
+          <nz-list-item (click)="show(item.id)" [ngStyle]="{'padding':'12px 10px'}" nbLight
+                        [nzContent]="!item.des ? item.tablename : item.des" [nzActions]="[edit]">
+            <ng-template #edit>
+              <i class="fa fa-bars"></i>
+            </ng-template>
+          </nz-list-item>
+
+        </ng-template>
+      </nz-list>
+    </nz-card>
+  </div>
+
+  <div nz-col [nzSpan]="18">
+
+    <nz-card nbCardNoPadding nzTitle="表结构" [nzLoading]="loaddata">
+
+      <nz-table #nzTable [nzData]="columns" [nzLoading]="loaddata" [nzPageSize]="8" nzScroll="{x:2000,y:300}">
+        <thead nz-thead>
+        <tr>
+          <th nz-th><span>列名</span></th>
+          <th nz-th><span>描述</span></th>
+          <th nz-th><span>默认值</span></th>
+          <th nz-th><span>类型</span></th>
+          <th nz-th><span>长度</span></th>
+          <th nz-th><span>操作</span></th>
+        </tr>
+        </thead>
+        <tbody nz-tbody>
+        <tr nz-tbody-tr *ngFor="let column of nzTable.data">
+          <td nz-td>{{ column.columnname }}</td>
+          <td nz-td>{{ column.des }}</td>
+          <td nz-td>{{ column.def }}</td>
+          <td nz-td>{{ column.type }}</td>
+          <td nz-td>{{ column.length }}</td>
+          <td nz-td>
+            <button nz-button [nzType]="'primary'" (click)="user.nav(url.url)">
+              操作
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </nz-table>
+    </nz-card>
+  </div>
+</div>
+
+
+<ng-template #avatarTemplate>
+  <nz-avatar nzSrc="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></nz-avatar>
+</ng-template>
+<ng-template #actionSetting>
+  <i class="anticon anticon-setting"></i>
+</ng-template>
+<ng-template #actionEdit>
+  <i class="anticon anticon-edit"></i>
+</ng-template>
+<ng-template #actionEllipsis>
+  <i class="anticon anticon-ellipsis"></i>
+</ng-template>
+
+
