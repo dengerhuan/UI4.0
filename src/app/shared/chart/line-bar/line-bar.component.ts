@@ -52,8 +52,6 @@ export class LineBarComponent implements OnInit, AfterViewInit, OnChanges, OnDes
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.hasOwnProperty('data') && !changes.data.firstChange) {
-      console.log(this.chart)
-      //this.chart.changeData(changes.data.currentValue);
       this.destory();
       this.reDraw();
 

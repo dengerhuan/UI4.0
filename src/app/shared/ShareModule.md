@@ -42,6 +42,8 @@
 │   │   ├── README.md
 │   ├── nbLight
 │   │   ├── README.md
+│   ├── line-bar
+│   │   ├── README.md
 ├── guard
 │   ├── AuthGuard
 │   │   ├── README.md
