@@ -2,6 +2,8 @@
 
 一个大数据可视化的后台开发框架
 
+[演示地址](http://1.nbexample.applinzi.com/dist/)
+
 ## 特性
 
 - 基于ant design 的视觉效果
@@ -9,6 +11,9 @@
 - 使用TypeScript 进行项目构建
 
 ## 支持的环境
+- ng-zorro-antd0.6不在更新，使用到的ng-zooro-ant会更新到0.7版本
+
+## 依赖更新
 - 最新版本的chrome以及firefox
 
 ## 构建
